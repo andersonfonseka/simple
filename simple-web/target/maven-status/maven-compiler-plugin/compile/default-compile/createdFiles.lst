@@ -1,0 +1,9 @@
+com\andersonfonseka\simple\util\SimpleHandler.class
+com\andersonfonseka\simple\taghandler\SimpleInputTag.class
+com\andersonfonseka\project\controller\ProjectController.class
+com\andersonfonseka\simple\servlet\SimpleServlet.class
+com\andersonfonseka\simple\util\SimpleConfigParser.class
+com\andersonfonseka\simple\navigation\SimpleForward.class
+com\andersonfonseka\project\form\ProjectForm.class
+com\andersonfonseka\simple\form\SimpleForm.class
+com\andersonfonseka\simple\controller\SimpleController.class
