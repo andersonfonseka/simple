@@ -25,12 +25,15 @@ public class ProjectController extends SimpleServlet {
 		SimpleForward.doForward("projectPage", req, resp);
 	}
 
-	public void teste(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
+	public void execute(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
 			throws ServletException, IOException {
 
 		ProjectForm projectForm = (ProjectForm) form;
 
 		System.out.println(projectForm.getName());
+		System.out.println(projectForm.getPassword());
+		System.out.println(projectForm.getGenderId());
+		System.out.println(projectForm.getType());
 
 		req.setAttribute("projectForm", projectForm);
 

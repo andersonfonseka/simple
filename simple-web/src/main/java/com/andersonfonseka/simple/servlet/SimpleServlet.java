@@ -1,6 +1,7 @@
 package com.andersonfonseka.simple.servlet;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Enumeration;
 import java.util.Map;
@@ -86,12 +87,22 @@ public class SimpleServlet extends HttpServlet {
 
 						System.out.println(element);
 
-						Method mForm = form.getClass().getMethod(
-								"set" + element.substring(0, 1).toUpperCase() + element.substring(1),
-								new Class[] { String.class });
-						mForm.invoke(form, req.getParameterValues(element));
-					}
+						try {
 
+							Method mForm = form.getClass().getMethod(
+									"set" + element.substring(0, 1).toUpperCase() + element.substring(1),
+									new Class[] { String.class });
+
+							mForm.invoke(form, req.getParameterValues(element));
+
+						} catch (Exception ex) {
+
+							Field mField = form.getClass().getDeclaredField(element);
+							mField.setAccessible(true);
+							mField.set(form, req.getParameterValues(element));
+
+						}
+					}
 				}
 
 				Method m = controller.getClass().getMethod(op,
