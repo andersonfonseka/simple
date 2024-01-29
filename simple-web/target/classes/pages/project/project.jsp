@@ -12,51 +12,14 @@
 					<form name="projectForm" method="post"
 						action="../simple-web/projectController.do?op=execute">
 						<h2>Project</h2>
-
-						<div class="row">
-
-							<div class="col">
-
-								<div class="mb-3">
-									<s:input label="Name" name="name" property="projectForm"
-										type="text" placeHolder="'Type your name here...'" />
-								</div>
-
-							</div>
-
-							<div class="col">
-
-								<div class="mb-3">
-									<s:input label="Password" name="password"
-										property="projectForm" type="password"
-										placeHolder="'Type your password here...'" />
-								</div>
-
-							</div>
-
-						</div>
 						
 						<div class="mb-3">
-									<s:textarea rows="3" label="Description" name="description" property="projectForm"
-										placeHolder="'Type the project description here...'" />
-								</div>
-						
-
-						<div class="mb-3">
-							<s:select label="Gender" name="genderId" property="projectForm"
-								placeHolder="'Choose your gender here...'" items="genderList" />
+							<s:table name="projectForm" property="projects" rows="5" paginationUrl="../simple-web/projectController.do?op=pagination">
+								<s:column property="id" title="ID"></s:column>
+								<s:column property="name" title="NAME"></s:column>
+								<s:column property="description" title="SUMMARY"></s:column>
+							</s:table>
 						</div>
-
-						<div class="mb-3">
-							<s:check label="Management Approach" name="type"
-								property="projectForm" placeHolder="'Choose your type here...'"
-								items="typeList" />
-						</div>
-						<hr />
-						<div class="mb-3">
-							<button type="submit" class="btn btn-primary">Enviar</button>
-						</div>
-
 					</form>
 
 				</div>

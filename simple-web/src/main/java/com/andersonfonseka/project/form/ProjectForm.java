@@ -22,6 +22,12 @@ public class ProjectForm extends SimpleForm {
 
 	private List<SelectItem> typeList = new ArrayList<>();
 
+	private String framework;
+
+	private List<SelectItem> frameworkList = new ArrayList<>();
+
+	private List projects = new ArrayList<>();
+
 	public ProjectForm() {
 
 		genderList.add(new SelectItem("1", "Male"));
@@ -29,6 +35,11 @@ public class ProjectForm extends SimpleForm {
 
 		typeList.add(new SelectItem("1", "Predictive"));
 		typeList.add(new SelectItem("2", "Adaptative"));
+
+		frameworkList.add(new SelectItem("1", "Scrum"));
+		frameworkList.add(new SelectItem("2", "Kanban"));
+		frameworkList.add(new SelectItem("3", "PMBoK"));
+		frameworkList.add(new SelectItem("4", "RUP"));
 
 	}
 
@@ -82,6 +93,26 @@ public class ProjectForm extends SimpleForm {
 
 	public void setTypeList(List<SelectItem> typeList) {
 		this.typeList = typeList;
+	}
+
+	public String getFramework() {
+		return framework;
+	}
+
+	public void setFramework(String framework) {
+		this.framework = framework;
+	}
+
+	public List<SelectItem> getFrameworkList() {
+		return frameworkList;
+	}
+
+	public List getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List projects) {
+		this.projects = projects;
 	}
 
 }

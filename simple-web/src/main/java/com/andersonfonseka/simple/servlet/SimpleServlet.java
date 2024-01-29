@@ -83,9 +83,7 @@ public class SimpleServlet extends HttpServlet {
 
 					String element = enumAttr.nextElement();
 
-					if (!element.equals("op")) {
-
-						System.out.println(element);
+					if (!element.equals("op") && !element.equals("tPage") && !element.equals("tRows")) {
 
 						try {
 
