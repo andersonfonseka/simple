@@ -4,23 +4,12 @@ import java.lang.reflect.Method;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.tagext.TagSupport;
 
-public class SimpleInputTag extends TagSupport {
-
-	private String label;
-
-	private String name;
-
-	private String property;
+public class SimpleInputTag extends SimpleTag {
 
 	private String type;
 
 	private String placeHolder;
-
-	public void setLabel(String label) {
-		this.label = label;
-	}
 
 	public void setType(String type) {
 		this.type = type;
@@ -30,22 +19,10 @@ public class SimpleInputTag extends TagSupport {
 		this.placeHolder = placeHolder;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getProperty() {
-		return property;
-	}
-
-	public void setProperty(String property) {
-		this.property = property;
-	}
-
 	public int doStartTag() throws JspException {
 		JspWriter out = pageContext.getOut();
 
-		Object form = pageContext.getRequest().getAttribute(this.property);
+		Object form = pageContext.getRequest().getAttribute(getProperty());
 
 		Method m;
 		String result = "";
@@ -53,7 +30,7 @@ public class SimpleInputTag extends TagSupport {
 		try {
 			if (null != form) {
 
-				m = form.getClass().getMethod("get" + this.name.substring(0, 1).toUpperCase() + this.name.substring(1),
+				m = form.getClass().getMethod("get" + getName().substring(0, 1).toUpperCase() + getName().substring(1),
 						null);
 
 				if (null != m) {
@@ -71,13 +48,13 @@ public class SimpleInputTag extends TagSupport {
 			StringBuilder sb = new StringBuilder();
 
 			if (result.length() > 0) {
-				sb.append("<label for=" + this.label + " class=\"form-label\">" + this.label + "</label>");
-				sb.append("<input type=" + this.type + " id=" + this.label + " name=" + this.name + " value=\"" + result
+				sb.append("<label for=" + getLabel() + " class=\"form-label\">" + getLabel() + "</label>");
+				sb.append("<input type=" + this.type + " id=" + getLabel() + " name=" + getName() + " value=\"" + result
 						+ "\" class=\"form-control\" placeholder=" + this.placeHolder + " aria-label="
 						+ this.placeHolder + " aria-describedby=\"basic-addon1\">");
 			} else {
-				sb.append("<label for=" + this.label + " class=\"form-label\">" + this.label + "</label>");
-				sb.append("<input type=" + this.type + " id=" + this.label + " name=" + this.name
+				sb.append("<label for=" + getLabel() + " class=\"form-label\">" + getLabel() + "</label>");
+				sb.append("<input type=" + this.type + " id=" + getLabel() + " name=" + getName()
 						+ " class=\"form-control\" placeholder=" + this.placeHolder + " aria-label=" + this.placeHolder
 						+ " aria-describedby=\"basic-addon1\">");
 			}

@@ -67,6 +67,40 @@ public class TableTag extends TagSupport {
 
 		StringBuilder sb = new StringBuilder();
 
+		int pRows = Integer.valueOf(this.rows);
+
+		String pageNumber = String.valueOf(pageContext.getRequest().getParameter("tPage"));
+
+		if (pageNumber.equals("null")) {
+			pageNumber = "1";
+		}
+
+		if (pRows < this.items.size()) {
+
+			int pages = this.items.size() / pRows;
+			int modPages = this.items.size() % pRows;
+
+			if (modPages > 0) {
+				pages++;
+			}
+
+			sb.append("<nav aria-label=\"Page navigation example\"><ul class=\"pagination justify-content-end\">\n");
+
+			for (int i = 0; i < pages; i++) {
+
+				if ((i + 1) == Integer.valueOf(pageNumber).intValue()) {
+					sb.append("<li class=\"page-item active\"><a class=\"page-link\" href=\"" + this.paginationUrl
+							+ "&tPage=" + (i + 1) + "&tRows=" + pRows + "\">" + (i + 1) + "</a></li>\n");
+				} else {
+					sb.append("<li class=\"page-item\"><a class=\"page-link\" href=\"" + this.paginationUrl + "&tPage="
+							+ (i + 1) + "&tRows=" + pRows + "\">" + (i + 1) + "</a></li>\n");
+				}
+			}
+
+			sb.append("</ul></nav>\n");
+
+		}
+
 		sb.append("<table class=\"table table-striped\"><thead><tr>\n");
 
 		for (String string : columnsCaption) {
@@ -93,9 +127,9 @@ public class TableTag extends TagSupport {
 			for (String string : columnsProperty) {
 
 				try {
-					Method mProperty = obj.getClass().getDeclaredMethod(
-							"get" + string.substring(0, 1).toUpperCase() + string.substring(1), null);
-					String result = String.valueOf(mProperty.invoke(obj, null));
+					Method mProperty = obj.getClass()
+							.getDeclaredMethod("get" + string.substring(0, 1).toUpperCase() + string.substring(1));
+					String result = String.valueOf(mProperty.invoke(obj));
 
 					sb.append("<td>" + result + "</td>\n");
 
@@ -113,28 +147,6 @@ public class TableTag extends TagSupport {
 		sb.append("</tbody>");
 
 		sb.append("</table>");
-
-		int pRows = Integer.valueOf(this.rows);
-
-		if (pRows < this.items.size()) {
-
-			int pages = this.items.size() / pRows;
-			int modPages = this.items.size() % pRows;
-
-			if (modPages > 0) {
-				pages++;
-			}
-
-			sb.append("<nav aria-label=\"Page navigation example\"><ul class=\"pagination\">\n");
-
-			for (int i = 0; i < pages; i++) {
-				sb.append("<li class=\"page-item\"><a class=\"page-link\" href=\"" + this.paginationUrl + "&tPage="
-						+ (i + 1) + "&tRows=" + pRows + "\">" + (i + 1) + "</a></li>\n");
-			}
-
-			sb.append("</ul></nav>\n");
-
-		}
 
 		try {
 			out.print(sb.toString());

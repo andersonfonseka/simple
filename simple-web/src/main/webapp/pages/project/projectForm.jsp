@@ -10,53 +10,31 @@
 				<div class="bd-example m-0 border-1">
 
 					<form name="projectForm" method="post"
-						action="../simple-web/projectController.do?op=execute">
+						action="../simple-web/projectController.do?op=execute" >
 						<h2>Project</h2>
 
-						<div class="row">
-
-							<div class="col-auto">
-
-								<div class="mb-3">
-									<s:input label="Name" name="name" property="projectForm"
-										type="text" placeHolder="'Type your name here...'" />
-								</div>
-
-							</div>
-
-							<div class="col-auto">
-
-								<div class="mb-3">
-									<s:input label="Password" name="password"
-										property="projectForm" type="password"
-										placeHolder="'Type your password here...'" />
-								</div>
-
-							</div>
-
-						</div>
-						
-						<div class="mb-3">
-									<s:textarea rows="3" label="Description" name="description" property="projectForm"
-										placeHolder="'Type the project description here...'" />
-								</div>
-						
 
 						<div class="mb-3">
-							<s:select label="Gender" name="genderId" property="projectForm"
-								placeHolder="'Choose your gender here...'" items="genderList" />
+							<s:input label="Name" name="name" property="projectForm"
+								type="text" placeHolder="'Type your name here...'"/>
 						</div>
 
 						<div class="mb-3">
-							<s:check label="Management Approach" name="type"
+							<s:textarea rows="3" label="Description" name="description"
+								property="projectForm"
+								placeHolder="'Type the project description here...'" />
+						</div>
+
+						<div class="mb-3">
+							<s:select label="Management Approach" name="type"
 								property="projectForm" items="typeList" />
 						</div>
-						
+
 						<div class="mb-3">
 							<s:radio label="Management Framework" name="framework"
 								property="projectForm" items="frameworkList" />
 						</div>
-						
+
 						<hr />
 						<div class="mb-3">
 							<button type="submit" class="btn btn-primary">Enviar</button>

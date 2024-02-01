@@ -130,10 +130,6 @@
 			<required>false</required>
 		</attribute>
 		<attribute>
-			<name>placeHolder</name>
-			<required>true</required>
-		</attribute>
-		<attribute>
 			<name>items</name>
 			<required>true</required>
 		</attribute>

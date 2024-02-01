@@ -5,18 +5,15 @@ import java.util.List;
 
 import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.taghandler.SelectItem;
+import com.andersonfonseka.simple.validation.Required;
 
 public class ProjectForm extends SimpleForm {
 
+	@Required
 	private String name = "";
 
-	private String password = "";
-
+	@Required
 	private String description = "";
-
-	private String genderId = "";
-
-	private List<SelectItem> genderList = new ArrayList<>();
 
 	private String[] type;
 
@@ -29,9 +26,6 @@ public class ProjectForm extends SimpleForm {
 	private List projects = new ArrayList<>();
 
 	public ProjectForm() {
-
-		genderList.add(new SelectItem("1", "Male"));
-		genderList.add(new SelectItem("2", "Female"));
 
 		typeList.add(new SelectItem("1", "Predictive"));
 		typeList.add(new SelectItem("2", "Adaptative"));
@@ -51,32 +45,12 @@ public class ProjectForm extends SimpleForm {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	public List<SelectItem> getGenderList() {
-		return genderList;
-	}
-
-	public String getGenderId() {
-		return genderId;
-	}
-
-	public void setGenderId(String genderId) {
-		this.genderId = genderId;
 	}
 
 	public String[] getType() {

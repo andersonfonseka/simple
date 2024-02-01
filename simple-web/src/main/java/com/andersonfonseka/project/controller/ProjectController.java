@@ -14,6 +14,7 @@ import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.navigation.SimpleForward;
 import com.andersonfonseka.simple.servlet.SimpleServlet;
 import com.andersonfonseka.simple.util.Pagination;
+import com.andersonfonseka.simple.validation.SimpleFormValidator;
 
 public class ProjectController extends SimpleServlet {
 
@@ -23,21 +24,9 @@ public class ProjectController extends SimpleServlet {
 
 	public ProjectController() {
 
-		mapProjects.add(new Project("Simple 1", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 2", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 3", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 4", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 5", "Lorem Ipsum is simply dummy"));
-
-		mapProjects.add(new Project("Simple 6", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 7", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 8", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 9", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 10", "Lorem Ipsum is simply dummy"));
-
-		mapProjects.add(new Project("Simple 11", "Lorem Ipsum is simply dummy"));
-		mapProjects.add(new Project("Simple 12", "Lorem Ipsum is simply dummy"));
-
+		for (int i = 0; i < 37; i++) {
+			mapProjects.add(new Project("Simple " + i, "Lorem Ipsum is simply dummy"));
+		}
 	}
 
 	public void load(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
@@ -73,10 +62,10 @@ public class ProjectController extends SimpleServlet {
 		ProjectForm projectForm = (ProjectForm) form;
 
 		System.out.println(projectForm.getName());
-		System.out.println(projectForm.getPassword());
-		System.out.println(projectForm.getGenderId());
 		System.out.println(projectForm.getType());
 		System.out.println(projectForm.getFramework());
+
+		SimpleFormValidator.doValidate(projectForm);
 
 		req.setAttribute("projectForm", projectForm);
 

@@ -4,7 +4,8 @@
 
 	<simple-form name="projectForm" className="com.andersonfonseka.project.form.ProjectForm"/>
 	
-	<simple-forward name="projectPage" path="/pages/project/project.jsp"/>
+	<simple-forward name="project" path="/pages/project/project.jsp"/>
+	<simple-forward name="projectPage" path="/pages/project/projectForm.jsp"/>
 
 	<simple-controller name="projectController" 
 					   className="com.andersonfonseka.project.controller.ProjectController"

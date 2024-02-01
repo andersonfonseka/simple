@@ -14,7 +14,7 @@
 						<h2>Project</h2>
 						
 						<div class="mb-3">
-							<s:table name="projectForm" property="projects" rows="5" paginationUrl="../simple-web/projectController.do?op=pagination">
+							<s:table name="projectForm" property="projects" rows="10" paginationUrl="../simple-web/projectController.do?op=pagination">
 								<s:column property="id" title="ID"></s:column>
 								<s:column property="name" title="NAME"></s:column>
 								<s:column property="description" title="SUMMARY"></s:column>
