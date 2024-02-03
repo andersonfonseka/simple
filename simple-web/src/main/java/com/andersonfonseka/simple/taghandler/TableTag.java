@@ -21,9 +21,7 @@ public class TableTag extends TagSupport {
 
 	private List items = new ArrayList<Object>();
 
-	private List<String> columnsCaption = new ArrayList<String>();
-
-	private List<String> columnsProperty = new ArrayList<String>();
+	private List<Column> columns = new ArrayList<Column>();
 
 	private String rows = "0";
 
@@ -52,8 +50,7 @@ public class TableTag extends TagSupport {
 			e.printStackTrace();
 		}
 
-		this.columnsCaption.clear();
-		this.columnsProperty.clear();
+		this.columns.clear();
 
 		counter = 0;
 
@@ -103,8 +100,8 @@ public class TableTag extends TagSupport {
 
 		sb.append("<table class=\"table table-striped\"><thead><tr>\n");
 
-		for (String string : columnsCaption) {
-			sb.append("<th scope=\"col\">" + string + "</th>\n");
+		for (Column col : columns) {
+			sb.append("<th scope=\"col\">" + col.getTitle() + "</th>\n");
 		}
 
 		sb.append("</tr></thead>\n");
@@ -124,20 +121,23 @@ public class TableTag extends TagSupport {
 
 			Object obj = object;
 
-			for (String string : columnsProperty) {
+			for (Column col : columns) {
 
 				try {
 					Method mProperty = obj.getClass()
-							.getDeclaredMethod("get" + string.substring(0, 1).toUpperCase() + string.substring(1));
+							.getDeclaredMethod(col.getProperty());
 					String result = String.valueOf(mProperty.invoke(obj));
 
-					sb.append("<td>" + result + "</td>\n");
+					if (col.getAction() != null && col.getAction().trim().length() > 0) {
+						sb.append("<td><a href=\"" + col.getAction() + "\">" + result + "</a></td>\n");
+					} else {
+						sb.append("<td>" + result + "</td>\n");	
+					}
+					
 
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-
 			}
 
 			sb.append("</tr>");
@@ -198,14 +198,6 @@ public class TableTag extends TagSupport {
 		this.counter = counter;
 	}
 
-	public List<String> getColumnsCaption() {
-		return columnsCaption;
-	}
-
-	public List<String> getColumnsProperty() {
-		return columnsProperty;
-	}
-
 	public String getPaginationUrl() {
 		return paginationUrl;
 	}
@@ -214,4 +206,8 @@ public class TableTag extends TagSupport {
 		this.paginationUrl = paginationUrl;
 	}
 
+	public void addColumn(Column column) {
+		this.columns.add(column);
+	}
+	
 }

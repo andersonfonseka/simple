@@ -6,11 +6,11 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 public class TableColumnTag extends TagSupport {
 
-	private String name;
-
 	private String property;
 
 	private String title;
+	
+	private String action;
 
 	@Override
 	public int doStartTag() throws JspException {
@@ -19,8 +19,13 @@ public class TableColumnTag extends TagSupport {
 
 		JspWriter out = pageContext.getOut();
 
-		tag.getColumnsCaption().add(this.title);
-		tag.getColumnsProperty().add(this.property);
+		Column column = new Column();
+
+		column.setTitle(this.title);
+		column.setProperty(this.property);
+		column.setAction(this.action);
+
+		tag.addColumn(column);
 
 		return EVAL_BODY_INCLUDE;
 	}
@@ -35,14 +40,6 @@ public class TableColumnTag extends TagSupport {
 	public int doAfterBody() throws JspException {
 		// TODO Auto-generated method stub
 		return super.doAfterBody();
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 
 	public String getProperty() {
@@ -61,4 +58,12 @@ public class TableColumnTag extends TagSupport {
 		this.title = title;
 	}
 
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+	
 }
