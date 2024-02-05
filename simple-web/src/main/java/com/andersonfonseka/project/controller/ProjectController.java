@@ -3,6 +3,7 @@ package com.andersonfonseka.project.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -38,7 +39,7 @@ public class ProjectController extends SimpleServlet {
 
 		req.setAttribute("projectForm", projectForm);
 
-		SimpleForward.doForward("projectPage", req, resp);
+		SimpleForward.doForward("project", req, resp);
 	}
 
 	public void pagination(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
@@ -53,7 +54,7 @@ public class ProjectController extends SimpleServlet {
 
 		req.setAttribute("projectForm", projectForm);
 
-		SimpleForward.doForward("projectPage", req, resp);
+		SimpleForward.doForward("project", req, resp);
 	}
 
 	public void execute(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
@@ -70,6 +71,20 @@ public class ProjectController extends SimpleServlet {
 		req.setAttribute("projectForm", projectForm);
 
 		SimpleForward.doForward("projectPage", req, resp);
+	}
+
+	public void details(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
+			throws ServletException, IOException {
+
+		ProjectForm projectForm = (ProjectForm) form;
+
+		projectForm.setProjects(mapProjects);
+
+		Logger.getAnonymousLogger().info(projectForm.getId());
+
+		req.setAttribute("projectForm", projectForm);
+
+		SimpleForward.doForward("project", req, resp);
 	}
 
 }

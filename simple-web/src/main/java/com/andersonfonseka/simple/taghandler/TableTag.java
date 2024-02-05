@@ -39,8 +39,7 @@ public class TableTag extends TagSupport {
 		try {
 			if (null != form) {
 
-				m = form.getClass()
-						.getMethod("get" + this.property.substring(0, 1).toUpperCase() + this.property.substring(1));
+				m = form.getClass().getMethod("get" + this.getProperty());
 
 				if (null != m) {
 					this.items = (List<Object>) m.invoke(form);
@@ -124,16 +123,34 @@ public class TableTag extends TagSupport {
 			for (Column col : columns) {
 
 				try {
-					Method mProperty = obj.getClass()
-							.getDeclaredMethod(col.getProperty());
+					Method mProperty = obj.getClass().getDeclaredMethod(col.getProperty());
 					String result = String.valueOf(mProperty.invoke(obj));
 
 					if (col.getAction() != null && col.getAction().trim().length() > 0) {
-						sb.append("<td><a href=\"" + col.getAction() + "\">" + result + "</a></td>\n");
+
+						StringBuilder builder = new StringBuilder();
+
+						if (null != col.getParams() && !col.getParams().isEmpty()) {
+							for (Param param : col.getParams()) {
+
+								Method m = obj.getClass().getMethod("get" + param.getProperty());
+								String value = "";
+
+								if (null != m) {
+									value = String.valueOf(m.invoke(obj));
+								}
+
+								builder.append("&" + param.getId() + "=" + value);
+							}
+
+							sb.append("<td><a href=\"" + col.getAction() + builder.toString() + "\">" + result
+									+ "</a></td>\n");
+
+						}
+
 					} else {
-						sb.append("<td>" + result + "</td>\n");	
+						sb.append("<td>" + result + "</td>\n");
 					}
-					
 
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -167,7 +184,7 @@ public class TableTag extends TagSupport {
 	}
 
 	public String getProperty() {
-		return property;
+		return this.property.substring(0, 1).toUpperCase() + this.property.substring(1);
 	}
 
 	public void setProperty(String property) {
@@ -209,5 +226,5 @@ public class TableTag extends TagSupport {
 	public void addColumn(Column column) {
 		this.columns.add(column);
 	}
-	
+
 }

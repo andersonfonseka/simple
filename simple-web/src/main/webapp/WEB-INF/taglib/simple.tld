@@ -171,4 +171,16 @@
 			<required>false</required>
 		</attribute>
 	</tag>
+	<tag>
+		<name>param</name>
+		<tag-class>com.andersonfonseka.simple.taghandler.ParamTag</tag-class>
+		<attribute>
+			<name>id</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>property</name>
+			<required>true</required>
+		</attribute>
+	</tag>
 </taglib>  

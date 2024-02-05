@@ -1,1 +1,1 @@
-<jsp:forward page="/healthImagingController.do?op=load"></jsp:forward>
+<jsp:forward page="/projectController.do?op=load"></jsp:forward>

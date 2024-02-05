@@ -1,12 +1,19 @@
 package com.andersonfonseka.simple.taghandler;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class Column {
 
 	private String property = "";
 
 	private String title = "";
-	
+
 	private String action = "";
+
+	private Map<String, Param> params = new HashMap<String, Param>();
 
 	public String getProperty() {
 		return "get" + property.substring(0, 1).toUpperCase() + property.substring(1);
@@ -31,5 +38,13 @@ public class Column {
 	public void setAction(String action) {
 		this.action = action;
 	}
-	
+
+	public List<Param> getParams() {
+		return new ArrayList<Param>(this.params.values());
+	}
+
+	public void setParams(Map<String, Param> params) {
+		this.params = params;
+	}
+
 }

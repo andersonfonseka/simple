@@ -9,6 +9,8 @@ import com.andersonfonseka.simple.validation.Required;
 
 public class ProjectForm extends SimpleForm {
 
+	private String id;
+
 	@Required
 	private String name = "";
 
@@ -35,6 +37,14 @@ public class ProjectForm extends SimpleForm {
 		frameworkList.add(new SelectItem("3", "PMBoK"));
 		frameworkList.add(new SelectItem("4", "RUP"));
 
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getName() {
