@@ -15,7 +15,6 @@ import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.navigation.SimpleForward;
 import com.andersonfonseka.simple.servlet.SimpleServlet;
 import com.andersonfonseka.simple.util.Pagination;
-import com.andersonfonseka.simple.validation.SimpleFormValidator;
 
 public class ProjectController extends SimpleServlet {
 
@@ -63,10 +62,10 @@ public class ProjectController extends SimpleServlet {
 		ProjectForm projectForm = (ProjectForm) form;
 
 		System.out.println(projectForm.getName());
-		System.out.println(projectForm.getType());
+		System.out.println(projectForm.getApproach());
 		System.out.println(projectForm.getFramework());
 
-		SimpleFormValidator.doValidate(projectForm);
+		req.setAttribute("alert", projectForm.doValidate());
 
 		req.setAttribute("projectForm", projectForm);
 
@@ -84,7 +83,7 @@ public class ProjectController extends SimpleServlet {
 
 		req.setAttribute("projectForm", projectForm);
 
-		SimpleForward.doForward("project", req, resp);
+		SimpleForward.doForward("projectPage", req, resp);
 	}
 
 }

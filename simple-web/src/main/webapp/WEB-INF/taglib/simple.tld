@@ -183,4 +183,8 @@
 			<required>true</required>
 		</attribute>
 	</tag>
+	<tag>
+		<name>alert</name>
+		<tag-class>com.andersonfonseka.simple.taghandler.SimpleAlertTag</tag-class>
+	</tag>
 </taglib>  

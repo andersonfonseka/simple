@@ -6,6 +6,8 @@
 <body>
 	<div class="album py-5 bg-body-tertiary">
 		<div class="container">
+		<s:alert></s:alert>
+	
 			<div class="bd-example-snippet bd-code-snippet">
 				<div class="bd-example m-0 border-1">
 
@@ -26,8 +28,8 @@
 						</div>
 
 						<div class="mb-3">
-							<s:select label="Management Approach" name="type"
-								property="projectForm" items="typeList" />
+							<s:select label="Management Approach" name="approach"
+								property="projectForm" items="approachList" />
 						</div>
 
 						<div class="mb-3">

@@ -1,5 +1,9 @@
 package com.andersonfonseka.simple.form;
 
+import java.util.List;
+
+import com.andersonfonseka.simple.validation.SimpleFormValidator;
+
 public class SimpleForm {
 
 	private String name;
@@ -22,4 +26,7 @@ public class SimpleForm {
 		this.className = className;
 	}
 
+	public List<String> doValidate() {
+		return SimpleFormValidator.doValidate(this);
+	}
 }

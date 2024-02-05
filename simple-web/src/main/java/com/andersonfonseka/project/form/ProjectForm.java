@@ -11,17 +11,19 @@ public class ProjectForm extends SimpleForm {
 
 	private String id;
 
-	@Required
+	@Required("Name")
 	private String name = "";
 
-	@Required
+	@Required("Description")
 	private String description = "";
 
-	private String[] type;
+	@Required("Management Approach")
+	private String approach;
 
-	private List<SelectItem> typeList = new ArrayList<>();
+	private List<SelectItem> approachList = new ArrayList<>();
 
-	private String framework;
+	@Required("Management Framework")
+	private String framework = "";
 
 	private List<SelectItem> frameworkList = new ArrayList<>();
 
@@ -29,8 +31,9 @@ public class ProjectForm extends SimpleForm {
 
 	public ProjectForm() {
 
-		typeList.add(new SelectItem("1", "Predictive"));
-		typeList.add(new SelectItem("2", "Adaptative"));
+		approachList.add(new SelectItem("", "Choose one..."));
+		approachList.add(new SelectItem("1", "Predictive"));
+		approachList.add(new SelectItem("2", "Adaptative"));
 
 		frameworkList.add(new SelectItem("1", "Scrum"));
 		frameworkList.add(new SelectItem("2", "Kanban"));
@@ -63,20 +66,16 @@ public class ProjectForm extends SimpleForm {
 		this.description = description;
 	}
 
-	public String[] getType() {
-		return type;
+	public String getApproach() {
+		return approach;
 	}
 
-	public void setType(String[] type) {
-		this.type = type;
+	public void setApproach(String approach) {
+		this.approach = approach;
 	}
 
-	public List<SelectItem> getTypeList() {
-		return typeList;
-	}
-
-	public void setTypeList(List<SelectItem> typeList) {
-		this.typeList = typeList;
+	public List<SelectItem> getApproachList() {
+		return approachList;
 	}
 
 	public String getFramework() {

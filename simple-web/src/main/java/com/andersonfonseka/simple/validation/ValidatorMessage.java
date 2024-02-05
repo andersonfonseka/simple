@@ -14,7 +14,7 @@ public class ValidatorMessage {
 
 	@Override
 	public String toString() {
-		return "ValidatorMessage [message=" + message + ", name=" + name + "]";
+		return message;
 	}
 
 }
