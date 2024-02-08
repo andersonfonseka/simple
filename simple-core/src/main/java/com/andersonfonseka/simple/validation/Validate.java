@@ -7,8 +7,10 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface Required {
+public @interface Validate {
 
-	String value() default "";
+	String fieldName() default "";
+
+	ValidateEnum[] types();
 
 }

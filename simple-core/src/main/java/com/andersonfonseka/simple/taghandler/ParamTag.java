@@ -4,6 +4,8 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import com.andersonfonseka.simple.taghandler.model.Param;
+
 public class ParamTag extends TagSupport {
 
 	private String id;

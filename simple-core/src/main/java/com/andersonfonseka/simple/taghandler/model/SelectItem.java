@@ -1,4 +1,4 @@
-package com.andersonfonseka.simple.taghandler;
+package com.andersonfonseka.simple.taghandler.model;
 
 public class SelectItem {
 

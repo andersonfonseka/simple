@@ -1,4 +1,4 @@
-package com.andersonfonseka.simple.taghandler;
+package com.andersonfonseka.simple.taghandler.model;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -16,10 +16,15 @@ public class SimpleFormValidator {
 		for (Field field : fld) {
 			field.setAccessible(true);
 			if (null != field.getAnnotations() && field.getAnnotations().length > 0) {
-				if (field.getDeclaredAnnotationsByType(Required.class) != null) {
+				if (field.getDeclaredAnnotationsByType(Validate.class) != null) {
 					try {
-						String result = new RequiredValidator().doExecute(field.getAnnotation(Required.class).value(),
-								String.valueOf(field.get(form)));
+						String result = "";
+
+						if (field.getAnnotation(Validate.class).types()[0].compareTo(ValidateEnum.REQUIRED) == 0) {
+							result = new RequiredValidator().doExecute(field.getAnnotation(Validate.class).fieldName(),
+									String.valueOf(field.get(form)));
+						}
+
 						if (result.trim().length() > 0) {
 							errors.add(result.trim());
 						}

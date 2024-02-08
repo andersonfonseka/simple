@@ -7,6 +7,9 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import com.andersonfonseka.simple.taghandler.model.Column;
+import com.andersonfonseka.simple.taghandler.model.Param;
+
 public class TableColumnTag extends TagSupport {
 
 	private String property;

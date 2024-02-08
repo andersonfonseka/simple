@@ -8,7 +8,9 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
-public class SimpleRadioTag extends TagSupport {
+import com.andersonfonseka.simple.taghandler.model.SelectItem;
+
+public class SimpleCheckTag extends TagSupport {
 
 	private String label;
 
@@ -17,6 +19,8 @@ public class SimpleRadioTag extends TagSupport {
 	private String property;
 
 	private String type;
+
+	private String placeHolder;
 
 	private String items;
 
@@ -28,6 +32,10 @@ public class SimpleRadioTag extends TagSupport {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public void setPlaceHolder(String placeHolder) {
+		this.placeHolder = placeHolder;
 	}
 
 	public void setName(String name) {
@@ -57,7 +65,7 @@ public class SimpleRadioTag extends TagSupport {
 
 		Method m;
 
-		String result = "";
+		String[] result = new String[this.selectItems.size()];
 
 		try {
 			if (null != form) {
@@ -73,7 +81,7 @@ public class SimpleRadioTag extends TagSupport {
 						null);
 
 				if (null != m) {
-					result = String.valueOf(m.invoke(form));
+					result = (String[]) m.invoke(form);
 				}
 			}
 
@@ -92,7 +100,7 @@ public class SimpleRadioTag extends TagSupport {
 
 				if (checkValue(selectItem.getValue(), result)) {
 					sb.append("<div class=\"form-check form-check-inline\">\n");
-					sb.append("<input class=\"form-check-input\" type=\"radio\" value=\"" + selectItem.getValue()
+					sb.append("<input class=\"form-check-input\" type=\"checkbox\" value=\"" + selectItem.getValue()
 							+ "\" id=\"" + this.name + "\" name=\"" + this.name + "\" checked>");
 					sb.append("<label class=\"form-check-label\" for=\"" + this.name + "\">");
 					sb.append(selectItem.getLabel());
@@ -100,7 +108,7 @@ public class SimpleRadioTag extends TagSupport {
 					sb.append("</div>");
 				} else {
 					sb.append("<div class=\"form-check form-check-inline\">\n");
-					sb.append("<input class=\"form-check-input\" type=\"radio\" value=\"" + selectItem.getValue()
+					sb.append("<input class=\"form-check-input\" type=\"checkbox\" value=\"" + selectItem.getValue()
 							+ "\" id=\"" + this.name + "\" name=\"" + this.name + "\" >");
 					sb.append("<label class=\"form-check-label\" for=\"" + this.name + "\">");
 					sb.append(selectItem.getLabel());
@@ -120,10 +128,19 @@ public class SimpleRadioTag extends TagSupport {
 		return SKIP_BODY;
 	}
 
-	private boolean checkValue(String value, String values) {
+	private boolean checkValue(String value, String[] values) {
 
 		boolean result = false;
-		result = value.equals(values);
+
+		if (null != values) {
+			for (int i = 0; i < values.length; i++) {
+				String string = values[i];
+				result = value.equals(values[i]);
+				if (result)
+					break;
+			}
+		}
+
 		return result;
 	}
 
