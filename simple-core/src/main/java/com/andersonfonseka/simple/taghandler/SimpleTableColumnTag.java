@@ -10,7 +10,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 import com.andersonfonseka.simple.taghandler.model.Column;
 import com.andersonfonseka.simple.taghandler.model.Param;
 
-public class TableColumnTag extends TagSupport {
+public class SimpleTableColumnTag extends TagSupport {
 
 	private String property;
 
@@ -20,14 +20,14 @@ public class TableColumnTag extends TagSupport {
 
 	private Map<String, Param> params = new HashMap<String, Param>();
 
-	public TableColumnTag() {
+	public SimpleTableColumnTag() {
 		this.params.clear();
 	}
 
 	@Override
 	public int doStartTag() throws JspException {
 
-		TableTag tag = (TableTag) getParent();
+		SimpleTableTag tag = (SimpleTableTag) getParent();
 
 		JspWriter out = pageContext.getOut();
 

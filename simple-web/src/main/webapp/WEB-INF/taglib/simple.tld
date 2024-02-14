@@ -137,7 +137,7 @@
 
 	<tag>
 		<name>table</name>
-		<tag-class>com.andersonfonseka.simple.taghandler.TableTag</tag-class>
+		<tag-class>com.andersonfonseka.simple.taghandler.SimpleTableTag</tag-class>
 		<attribute>
 			<name>name</name>
 			<required>true</required>
@@ -157,7 +157,7 @@
 	</tag>
 	<tag>
 		<name>column</name>
-		<tag-class>com.andersonfonseka.simple.taghandler.TableColumnTag</tag-class>
+		<tag-class>com.andersonfonseka.simple.taghandler.SimpleTableColumnTag</tag-class>
 		<attribute>
 			<name>property</name>
 			<required>true</required>
@@ -173,7 +173,7 @@
 	</tag>
 	<tag>
 		<name>param</name>
-		<tag-class>com.andersonfonseka.simple.taghandler.ParamTag</tag-class>
+		<tag-class>com.andersonfonseka.simple.taghandler.SimpleParamTag</tag-class>
 		<attribute>
 			<name>id</name>
 			<required>true</required>
@@ -186,5 +186,25 @@
 	<tag>
 		<name>alert</name>
 		<tag-class>com.andersonfonseka.simple.taghandler.SimpleAlertTag</tag-class>
+	</tag>
+	<tag>
+		<name>button</name>
+		<tag-class>com.andersonfonseka.simple.taghandler.SimpleButtonTag</tag-class>
+		<attribute>
+			<name>type</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+		</attribute>
+		<attribute>
+			<name>title</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>action</name>
+			<required>false</required>
+		</attribute>
 	</tag>
 </taglib>  

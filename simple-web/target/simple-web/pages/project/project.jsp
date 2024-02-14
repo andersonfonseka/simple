@@ -1,7 +1,7 @@
 <%@ taglib uri="http://simple.org/simple-taglib" prefix="s"%>
 <html>
 
-<jsp:include page="layout/header.jsp" />
+<jsp:include page="../layout/header.jsp" />
 
 <body>
 	<div class="album py-5 bg-body-tertiary">

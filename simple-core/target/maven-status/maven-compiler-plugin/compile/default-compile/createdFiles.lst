@@ -4,11 +4,12 @@ com\andersonfonseka\simple\validation\Validate.class
 com\andersonfonseka\simple\taghandler\model\Param.class
 com\andersonfonseka\simple\taghandler\SimpleAlertTag.class
 com\andersonfonseka\simple\util\SimpleConfigParser.class
+com\andersonfonseka\simple\taghandler\SimpleParamTag.class
 com\andersonfonseka\simple\validation\ValidatorMessage.class
 com\andersonfonseka\simple\taghandler\model\Column.class
-com\andersonfonseka\simple\taghandler\TableTag.class
 com\andersonfonseka\simple\util\Pagination.class
 com\andersonfonseka\simple\validation\ValidateEnum.class
+com\andersonfonseka\simple\taghandler\SimpleTableTag.class
 com\andersonfonseka\simple\util\PaginationList.class
 com\andersonfonseka\simple\validation\RequiredValidator.class
 com\andersonfonseka\simple\taghandler\SimpleTextAreaTag.class
@@ -17,10 +18,10 @@ com\andersonfonseka\simple\servlet\SimpleServlet.class
 com\andersonfonseka\simple\taghandler\SimpleTag.class
 com\andersonfonseka\simple\taghandler\SimpleSelectTag.class
 com\andersonfonseka\simple\navigation\SimpleForward.class
-com\andersonfonseka\simple\taghandler\ParamTag.class
+com\andersonfonseka\simple\taghandler\SimpleButtonTag.class
 com\andersonfonseka\simple\controller\SimpleController.class
 com\andersonfonseka\simple\taghandler\model\SelectItem.class
 com\andersonfonseka\simple\util\SimpleHandler.class
+com\andersonfonseka\simple\taghandler\SimpleTableColumnTag.class
 com\andersonfonseka\simple\taghandler\SimpleCheckTag.class
 com\andersonfonseka\simple\form\SimpleForm.class
-com\andersonfonseka\simple\taghandler\TableColumnTag.class

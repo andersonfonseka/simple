@@ -6,7 +6,7 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 import com.andersonfonseka.simple.taghandler.model.Param;
 
-public class ParamTag extends TagSupport {
+public class SimpleParamTag extends TagSupport {
 
 	private String id;
 
@@ -15,7 +15,7 @@ public class ParamTag extends TagSupport {
 	@Override
 	public int doStartTag() throws JspException {
 
-		TableColumnTag tag = (TableColumnTag) getParent();
+		SimpleTableColumnTag tag = (SimpleTableColumnTag) getParent();
 
 		JspWriter out = pageContext.getOut();
 
