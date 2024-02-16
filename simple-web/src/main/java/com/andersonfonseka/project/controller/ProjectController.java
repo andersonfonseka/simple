@@ -20,7 +20,7 @@ public class ProjectController extends SimpleServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Project> mapProjects = new ArrayList();
+	private List<Project> mapProjects = new ArrayList<>();
 
 	public ProjectController() {
 

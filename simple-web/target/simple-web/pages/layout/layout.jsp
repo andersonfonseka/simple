@@ -2,7 +2,7 @@
 
 <html>
 
-<jsp:include page="${top}" />
+<jsp:include page="${header}" />
 
 <body>
 	<div class="container-fluid">
@@ -18,5 +18,5 @@
 	</div>
 
 </body>
-	<jsp:include page="${bottom}" />
+	<jsp:include page="${footer}" />
 </html>

@@ -6,6 +6,7 @@ C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\sim
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\util\Pagination.java
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\validation\RequiredValidator.java
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\taghandler\SimpleTableColumnTag.java
+C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\tiles\SimpleTiles.java
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\controller\SimpleController.java
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\taghandler\SimpleAlertTag.java
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\taghandler\SimpleTextAreaTag.java
@@ -24,4 +25,5 @@ C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\sim
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\taghandler\SimpleTableTag.java
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\taghandler\model\Param.java
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\taghandler\SimpleRadioTag.java
+C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\tiles\SimpleTilesFragment.java
 C:\Users\55819\Projetos\simple\simple-core\src\main\java\com\andersonfonseka\simple\validation\ValidateEnum.java

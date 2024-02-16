@@ -30,6 +30,7 @@ public class SimpleServlet extends HttpServlet {
 				req.getServletContext().setAttribute("controllerMap", handler.getControllerMap());
 				req.getServletContext().setAttribute("formMap", handler.getFormMap());
 				req.getServletContext().setAttribute("forwardMap", handler.getForwardMap());
+				req.getServletContext().setAttribute("tilesMap", handler.getTilesMap());
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

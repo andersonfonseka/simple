@@ -1,3 +1,4 @@
+com\andersonfonseka\simple\tiles\SimpleTiles.class
 com\andersonfonseka\simple\taghandler\SimpleInputTag.class
 com\andersonfonseka\simple\validation\SimpleFormValidator.class
 com\andersonfonseka\simple\validation\Validate.class
@@ -7,6 +8,7 @@ com\andersonfonseka\simple\util\SimpleConfigParser.class
 com\andersonfonseka\simple\taghandler\SimpleParamTag.class
 com\andersonfonseka\simple\validation\ValidatorMessage.class
 com\andersonfonseka\simple\taghandler\model\Column.class
+com\andersonfonseka\simple\tiles\SimpleTilesFragment.class
 com\andersonfonseka\simple\util\Pagination.class
 com\andersonfonseka\simple\validation\ValidateEnum.class
 com\andersonfonseka\simple\taghandler\SimpleTableTag.class
