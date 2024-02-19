@@ -10,11 +10,14 @@ import com.andersonfonseka.project.form.ProjectForm;
 import com.andersonfonseka.project.mapping.ProjectMapping;
 import com.andersonfonseka.project.model.Project;
 import com.andersonfonseka.project.repository.ProjectRepository;
+import com.andersonfonseka.simple.annotation.Controller;
+import com.andersonfonseka.simple.enums.ScopeEnum;
 import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.navigation.SimpleForward;
 import com.andersonfonseka.simple.servlet.SimpleServlet;
 import com.andersonfonseka.simple.util.Pagination;
 
+@Controller(name = "projectController", formName = "projectForm", scope = ScopeEnum.REQUEST)
 public class ProjectController extends SimpleServlet {
 
 	private static final long serialVersionUID = 1L;

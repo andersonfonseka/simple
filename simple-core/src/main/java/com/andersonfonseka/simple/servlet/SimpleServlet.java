@@ -23,7 +23,7 @@ public class SimpleServlet extends HttpServlet {
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		if (req.getServletContext().getAttribute("controllerMap") == null) {
-
+			
 			try {
 				SimpleHandler handler = new SimpleHandler();
 				new SimpleConfigParser(req.getServletContext(), handler);

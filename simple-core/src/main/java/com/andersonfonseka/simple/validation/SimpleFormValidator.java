@@ -4,6 +4,8 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.andersonfonseka.simple.annotation.Validate;
+import com.andersonfonseka.simple.enums.ValidateEnum;
 import com.andersonfonseka.simple.form.SimpleForm;
 
 public class SimpleFormValidator {

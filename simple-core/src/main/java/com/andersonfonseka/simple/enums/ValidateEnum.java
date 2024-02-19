@@ -1,4 +1,4 @@
-package com.andersonfonseka.simple.validation;
+package com.andersonfonseka.simple.enums;
 
 public enum ValidateEnum {
 

@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.andersonfonseka.project.model.Project;
+import com.andersonfonseka.simple.annotation.Form;
+import com.andersonfonseka.simple.annotation.Validate;
+import com.andersonfonseka.simple.enums.ValidateEnum;
 import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.taghandler.model.SelectItem;
-import com.andersonfonseka.simple.validation.Validate;
-import com.andersonfonseka.simple.validation.ValidateEnum;
 
+@Form(name = "projectForm")
 public class ProjectForm extends SimpleForm {
 
 	private String id;
