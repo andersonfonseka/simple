@@ -1,16 +1,15 @@
 package com.andersonfonseka.project.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.andersonfonseka.project.form.ProjectForm;
+import com.andersonfonseka.project.mapping.ProjectMapping;
 import com.andersonfonseka.project.model.Project;
+import com.andersonfonseka.project.repository.ProjectRepository;
 import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.navigation.SimpleForward;
 import com.andersonfonseka.simple.servlet.SimpleServlet;
@@ -20,13 +19,10 @@ public class ProjectController extends SimpleServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private List<Project> mapProjects = new ArrayList<>();
-
+	private ProjectRepository projectRepository;
+	
 	public ProjectController() {
-
-		for (int i = 0; i < 37; i++) {
-			mapProjects.add(new Project("Simple " + i, "Lorem Ipsum is simply dummy"));
-		}
+		this.projectRepository = ProjectRepository.getInstance();
 	}
 
 	public void load(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
@@ -34,7 +30,7 @@ public class ProjectController extends SimpleServlet {
 
 		ProjectForm projectForm = new ProjectForm();
 
-		projectForm.setProjects(mapProjects);
+		projectForm.setProjects(this.projectRepository.list());
 
 		req.setAttribute("projectForm", projectForm);
 
@@ -49,41 +45,59 @@ public class ProjectController extends SimpleServlet {
 		int page = Integer.parseInt(req.getParameter("tPage"));
 		int rows = Integer.parseInt(req.getParameter("tRows"));
 
-		projectForm.setProjects(Pagination.getSublist(mapProjects, page, rows));
+		projectForm.setProjects(Pagination.getSublist(projectRepository.list(), page, rows));
 
 		req.setAttribute("projectForm", projectForm);
 
 		SimpleForward.doForward("project", req, resp);
 	}
+	
+	public void startCreate(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
+			throws ServletException, IOException {
+		
+		ProjectForm projectForm = new ProjectForm();
+		req.setAttribute("projectForm", projectForm);
 
-	public void execute(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
+		SimpleForward.doForward("projectCreate", req, resp);
+	}
+
+	public void create(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
 			throws ServletException, IOException {
 
 		ProjectForm projectForm = (ProjectForm) form;
-
-		System.out.println(projectForm.getName());
-		System.out.println(projectForm.getApproach());
-		System.out.println(projectForm.getFramework());
-
-		req.setAttribute("alert", projectForm.doValidate());
-
+		
 		req.setAttribute("projectForm", projectForm);
 
-		SimpleForward.doForward("projectPage", req, resp);
+		if (form.doValidate(req).isEmpty()) {
+			this.projectRepository.add(new ProjectMapping().getMapping(projectForm));
+		}
+
+		SimpleForward.doForward("projectCreate", req, resp);
 	}
 
-	public void details(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
+	public void startUpdate(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
+			throws ServletException, IOException {
+		
+		Project project = this.projectRepository.get(req.getParameter("id"));
+		
+		req.setAttribute("projectForm", new ProjectMapping().getMapping(project));
+
+		SimpleForward.doForward("projectUpdate", req, resp);
+	}
+	
+	public void update(HttpServletRequest req, HttpServletResponse resp, SimpleForm form)
 			throws ServletException, IOException {
 
 		ProjectForm projectForm = (ProjectForm) form;
-
-		projectForm.setProjects(mapProjects);
-
-		Logger.getAnonymousLogger().info(projectForm.getId());
-
+		
 		req.setAttribute("projectForm", projectForm);
 
-		SimpleForward.doForward("projectPage", req, resp);
+		if (form.doValidate(req).isEmpty()) {
+			this.projectRepository.edit(new ProjectMapping().getMapping(projectForm));
+		}
+
+		SimpleForward.doForward("projectCreate", req, resp);
 	}
+	
 
 }

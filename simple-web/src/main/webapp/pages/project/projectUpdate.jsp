@@ -1,10 +1,12 @@
 <%@ taglib uri="http://simple.org/simple-taglib" prefix="s"%>
 
-<div class="col-10">
 <form name="projectForm" method="post"
-	action="../simple-web/projectController.do?op=execute" >
+	action="../simple-web/projectController.do?op=update" >
 	<p>
 	<h2>Project</h2>
+	
+	<s:input name="id" property="projectForm" type="hidden"/>
+	
 	<div class="mb-3">
 		<s:input label="Name" name="name" property="projectForm"
 			type="text" placeHolder="'Type your name here...'"/>
@@ -33,5 +35,4 @@
 	</div>
 
 </form>
-</div>
 

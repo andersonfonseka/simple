@@ -47,13 +47,15 @@ public class SimpleInputTag extends SimpleTag {
 
 			StringBuilder sb = new StringBuilder();
 
-			if (result.length() > 0) {
+			if (!this.type.equals("hidden")) {
 				sb.append("<label for=" + getLabel() + " class=\"form-label\">" + getLabel() + "</label>");
+			}
+			
+			if (result.length() > 0) {
 				sb.append("<input type=" + this.type + " id=" + getLabel() + " name=" + getName() + " value=\"" + result
 						+ "\" class=\"form-control\" placeholder=" + this.placeHolder + " aria-label="
 						+ this.placeHolder + " aria-describedby=\"basic-addon1\">");
 			} else {
-				sb.append("<label for=" + getLabel() + " class=\"form-label\">" + getLabel() + "</label>");
 				sb.append("<input type=" + this.type + " id=" + getLabel() + " name=" + getName()
 						+ " class=\"form-control\" placeholder=" + this.placeHolder + " aria-label=" + this.placeHolder
 						+ " aria-describedby=\"basic-addon1\">");

@@ -1,8 +1,9 @@
+<%@ taglib uri="http://simple.org/simple-taglib" prefix="s"%>
+
 <form name="projectForm" method="post"
-	action="../simple-web/projectController.do?op=execute" >
+	action="../simple-web/projectController.do?op=create" >
+	<p>
 	<h2>Project</h2>
-
-
 	<div class="mb-3">
 		<s:input label="Name" name="name" property="projectForm"
 			type="text" placeHolder="'Type your name here...'"/>

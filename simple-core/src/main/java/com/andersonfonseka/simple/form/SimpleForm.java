@@ -2,6 +2,8 @@ package com.andersonfonseka.simple.form;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.andersonfonseka.simple.validation.SimpleFormValidator;
 
 public class SimpleForm {
@@ -26,7 +28,14 @@ public class SimpleForm {
 		this.className = className;
 	}
 
-	public List<String> doValidate() {
-		return SimpleFormValidator.doValidate(this);
+	public List<String> doValidate(HttpServletRequest req) {
+		
+		List<String> validatorMessage = SimpleFormValidator.doValidate(this);
+
+		if (!validatorMessage.isEmpty()) {
+			req.setAttribute("alert", validatorMessage);
+		}
+		
+		return validatorMessage;
 	}
 }

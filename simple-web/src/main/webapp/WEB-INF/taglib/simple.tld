@@ -39,7 +39,7 @@
 		<tag-class>com.andersonfonseka.simple.taghandler.SimpleInputTag</tag-class>
 		<attribute>
 			<name>label</name>
-			<required>true</required>
+			<required>false</required>
 		</attribute>
 		<attribute>
 			<name>name</name>
@@ -55,7 +55,7 @@
 		</attribute>
 		<attribute>
 			<name>placeHolder</name>
-			<required>true</required>
+			<required>false</required>
 		</attribute>
 	</tag>
 

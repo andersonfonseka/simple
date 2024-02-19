@@ -1,27 +1,30 @@
 package com.andersonfonseka.project.model;
 
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.andersonfonseka.simple.taghandler.model.SelectItem;
+import com.andersonfonseka.simple.validation.Validate;
+import com.andersonfonseka.simple.validation.ValidateEnum;
 
 public class Project {
 
-	private String id = UUID.randomUUID().toString();
+	private String id;
 
-	private String name;
+	private String name = "";
 
-	private String description;
+	private String description = "";
+	
+	private String approach = "";
 
-	public Project() {
+	private String framework = "";
+	
+	public void setId(String id) {
+		this.id = id;
 	}
 
-	public Project(String name) {
-		super();
+	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Project(String name, String description) {
-		super();
-		this.name = name;
-		this.description = description;
 	}
 
 	public String getId() {
@@ -40,4 +43,20 @@ public class Project {
 		this.description = description;
 	}
 
+	public String getApproach() {
+		return approach;
+	}
+
+	public void setApproach(String approach) {
+		this.approach = approach;
+	}
+
+	public String getFramework() {
+		return framework;
+	}
+
+	public void setFramework(String framework) {
+		this.framework = framework;
+	}
+	
 }

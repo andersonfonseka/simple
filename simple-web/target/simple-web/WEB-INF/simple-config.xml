@@ -3,7 +3,6 @@
 <simple-config>
 
 	<simple-form name="projectForm" className="com.andersonfonseka.project.form.ProjectForm"/>
-	<simple-form name="healthImagingForm" className="com.andersonfonseka.project.form.HealthImagingForm"/>
 	
 	<simple-controller name="projectController" 
 					   className="com.andersonfonseka.project.controller.ProjectController"
@@ -11,20 +10,26 @@
 					   scope="request"/>
 
 	<simple-tiles definition="layout.tiles" path="/pages/layout/layout.jsp">
-		<simple-tiles-fragment id="header" path="../layout/header.jsp"/>
-		<simple-tiles-fragment id="menu" path="../layout/header.jsp"/>
-		<simple-tiles-fragment id="footer" path="../layout/header.jsp"/>
+		<simple-tiles-fragment id="top" path="/pages/layout/header.jsp"/>
+		<simple-tiles-fragment id="menu" path="/pages/layout/menu.jsp"/>
+		<simple-tiles-fragment id="bottom" path="/pages/layout/footer.jsp"/>
 	</simple-tiles>
 	
 	<simple-tiles definition="project.tiles" extend="layout.tiles">
-		<simple-tiles-fragment id="body" path="../project/project.jsp"/>
+		<simple-tiles-fragment id="body" path="/pages/project/project.jsp"/>
 	</simple-tiles>
 
-	<simple-tiles definition="projectForm.tiles" extend="layout.tiles">
-		<simple-tiles-fragment id="body" path="../project/projectForm.jsp"/>
+	<simple-tiles definition="projectCreate.tiles" extend="layout.tiles">
+		<simple-tiles-fragment id="body" path="/pages/project/projectCreate.jsp"/>
 	</simple-tiles>
+
+	<simple-tiles definition="projectUpdate.tiles" extend="layout.tiles">
+		<simple-tiles-fragment id="body" path="/pages/project/projectUpdate.jsp"/>
+	</simple-tiles>
+
 	
 	<simple-forward name="project" path="project.tiles"/>
-	<simple-forward name="projectPage" path="projectForm.tiles"/>
+	<simple-forward name="projectCreate" path="projectCreate.tiles"/>
+	<simple-forward name="projectUpdate" path="projectUpdate.tiles"/>
 
 </simple-config>

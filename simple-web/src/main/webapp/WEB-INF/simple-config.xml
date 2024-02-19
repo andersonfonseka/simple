@@ -3,7 +3,6 @@
 <simple-config>
 
 	<simple-form name="projectForm" className="com.andersonfonseka.project.form.ProjectForm"/>
-	<simple-form name="healthImagingForm" className="com.andersonfonseka.project.form.HealthImagingForm"/>
 	
 	<simple-controller name="projectController" 
 					   className="com.andersonfonseka.project.controller.ProjectController"
@@ -20,11 +19,17 @@
 		<simple-tiles-fragment id="body" path="/pages/project/project.jsp"/>
 	</simple-tiles>
 
-	<simple-tiles definition="projectForm.tiles" extend="layout.tiles">
-		<simple-tiles-fragment id="body" path="/pages/project/projectForm.jsp"/>
+	<simple-tiles definition="projectCreate.tiles" extend="layout.tiles">
+		<simple-tiles-fragment id="body" path="/pages/project/projectCreate.jsp"/>
 	</simple-tiles>
+
+	<simple-tiles definition="projectUpdate.tiles" extend="layout.tiles">
+		<simple-tiles-fragment id="body" path="/pages/project/projectUpdate.jsp"/>
+	</simple-tiles>
+
 	
 	<simple-forward name="project" path="project.tiles"/>
-	<simple-forward name="projectPage" path="projectForm.tiles"/>
+	<simple-forward name="projectCreate" path="projectCreate.tiles"/>
+	<simple-forward name="projectUpdate" path="projectUpdate.tiles"/>
 
 </simple-config>
