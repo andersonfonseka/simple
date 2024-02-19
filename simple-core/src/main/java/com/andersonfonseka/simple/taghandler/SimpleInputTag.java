@@ -7,6 +7,8 @@ import javax.servlet.jsp.JspWriter;
 
 public class SimpleInputTag extends SimpleTag {
 
+	private static final long serialVersionUID = 1L;
+
 	private String type;
 
 	private String placeHolder;
@@ -30,8 +32,7 @@ public class SimpleInputTag extends SimpleTag {
 		try {
 			if (null != form) {
 
-				m = form.getClass().getMethod("get" + getName().substring(0, 1).toUpperCase() + getName().substring(1),
-						null);
+				m = form.getClass().getMethod("get" + getName().substring(0, 1).toUpperCase() + getName().substring(1));
 
 				if (null != m) {
 					result = String.valueOf(m.invoke(form));

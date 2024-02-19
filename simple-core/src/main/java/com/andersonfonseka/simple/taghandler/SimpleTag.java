@@ -4,6 +4,8 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 public class SimpleTag extends TagSupport {
 
+	private static final long serialVersionUID = 1L;
+
 	private String label;
 
 	private String name;

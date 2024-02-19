@@ -1,12 +1,5 @@
 package com.andersonfonseka.project.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.andersonfonseka.simple.taghandler.model.SelectItem;
-import com.andersonfonseka.simple.validation.Validate;
-import com.andersonfonseka.simple.validation.ValidateEnum;
-
 public class Project {
 
 	private String id;

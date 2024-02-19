@@ -11,6 +11,14 @@ public class ValidatorMessage {
 		this.message = message;
 		this.name = name;
 	}
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public String getName() {
+		return name;
+	}
 
 	@Override
 	public String toString() {

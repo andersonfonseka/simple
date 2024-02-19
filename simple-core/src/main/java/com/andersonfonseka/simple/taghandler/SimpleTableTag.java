@@ -22,7 +22,7 @@ public class SimpleTableTag extends TagSupport {
 
 	private String var;
 
-	private List items = new ArrayList<Object>();
+	private List<Object> items = new ArrayList<Object>();
 
 	private List<Column> columns = new ArrayList<Column>();
 

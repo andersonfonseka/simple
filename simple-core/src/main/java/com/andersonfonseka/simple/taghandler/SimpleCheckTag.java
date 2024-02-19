@@ -12,30 +12,20 @@ import com.andersonfonseka.simple.taghandler.model.SelectItem;
 
 public class SimpleCheckTag extends TagSupport {
 
+	private static final long serialVersionUID = 1L;
+
 	private String label;
 
 	private String name;
 
 	private String property;
 
-	private String type;
-
-	private String placeHolder;
-
 	private String items;
 
-	private List<SelectItem> selectItems = new ArrayList();
+	private List<SelectItem> selectItems = new ArrayList<SelectItem>();
 
 	public void setLabel(String label) {
 		this.label = label;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public void setPlaceHolder(String placeHolder) {
-		this.placeHolder = placeHolder;
 	}
 
 	public void setName(String name) {
@@ -71,14 +61,13 @@ public class SimpleCheckTag extends TagSupport {
 			if (null != form) {
 
 				m = form.getClass()
-						.getMethod("get" + this.items.substring(0, 1).toUpperCase() + this.items.substring(1), null);
+						.getMethod("get" + this.items.substring(0, 1).toUpperCase() + this.items.substring(1));
 
 				if (null != m) {
 					this.selectItems = (List<SelectItem>) m.invoke(form);
 				}
 
-				m = form.getClass().getMethod("get" + this.name.substring(0, 1).toUpperCase() + this.name.substring(1),
-						null);
+				m = form.getClass().getMethod("get" + this.name.substring(0, 1).toUpperCase() + this.name.substring(1));
 
 				if (null != m) {
 					result = (String[]) m.invoke(form);
@@ -95,7 +84,6 @@ public class SimpleCheckTag extends TagSupport {
 
 			sb.append("<label for=" + this.label + " class=\"form-label\">" + this.label + "</label><br/>");
 
-			int i = 0;
 			for (SelectItem selectItem : selectItems) {
 
 				if (checkValue(selectItem.getValue(), result)) {
@@ -115,8 +103,6 @@ public class SimpleCheckTag extends TagSupport {
 					sb.append("</label>");
 					sb.append("</div>");
 				}
-
-				i++;
 			}
 
 			out.print(sb.toString());
@@ -134,7 +120,6 @@ public class SimpleCheckTag extends TagSupport {
 
 		if (null != values) {
 			for (int i = 0; i < values.length; i++) {
-				String string = values[i];
 				result = value.equals(values[i]);
 				if (result)
 					break;

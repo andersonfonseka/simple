@@ -1,9 +1,9 @@
 package com.andersonfonseka.project.form;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
+import com.andersonfonseka.project.model.Project;
 import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.taghandler.model.SelectItem;
 import com.andersonfonseka.simple.validation.Validate;
@@ -29,7 +29,7 @@ public class ProjectForm extends SimpleForm {
 
 	private List<SelectItem> frameworkList = new ArrayList<>();
 
-	private Collection projects = new ArrayList<>();
+	private List<Project> projects = new ArrayList<Project>();
 
 	public ProjectForm() {
 
@@ -92,11 +92,11 @@ public class ProjectForm extends SimpleForm {
 		return frameworkList;
 	}
 
-	public Collection getProjects() {
+	public List<Project> getProjects() {
 		return projects;
 	}
 
-	public void setProjects(Collection projects) {
+	public void setProjects(List<Project> projects) {
 		this.projects = projects;
 	}
 

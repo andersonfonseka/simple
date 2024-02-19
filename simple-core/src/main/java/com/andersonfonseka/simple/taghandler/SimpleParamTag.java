@@ -1,12 +1,13 @@
 package com.andersonfonseka.simple.taghandler;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 
 import com.andersonfonseka.simple.taghandler.model.Param;
 
 public class SimpleParamTag extends TagSupport {
+
+	private static final long serialVersionUID = 1L;
 
 	private String id;
 
@@ -16,8 +17,6 @@ public class SimpleParamTag extends TagSupport {
 	public int doStartTag() throws JspException {
 
 		SimpleTableColumnTag tag = (SimpleTableColumnTag) getParent();
-
-		JspWriter out = pageContext.getOut();
 
 		Param param = new Param();
 

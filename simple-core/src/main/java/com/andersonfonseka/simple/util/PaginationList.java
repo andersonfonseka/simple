@@ -2,8 +2,10 @@ package com.andersonfonseka.simple.util;
 
 import java.util.ArrayList;
 
-public class PaginationList extends ArrayList {
+public class PaginationList extends ArrayList<Object> {
 
+	private static final long serialVersionUID = 1L;
+	
 	private int pSize;
 
 	public void setSize(int pSize) {
@@ -12,7 +14,6 @@ public class PaginationList extends ArrayList {
 
 	@Override
 	public int size() {
-		// TODO Auto-generated method stub
 		return this.pSize;
 	}
 

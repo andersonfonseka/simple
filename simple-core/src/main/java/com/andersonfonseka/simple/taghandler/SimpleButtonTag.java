@@ -8,6 +8,8 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 public class SimpleButtonTag extends TagSupport {
 
+	private static final long serialVersionUID = 1L;
+
 	private String type = "submit";
 
 	private String style = "btn btn-primary";

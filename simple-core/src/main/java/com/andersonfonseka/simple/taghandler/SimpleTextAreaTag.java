@@ -8,6 +8,8 @@ import javax.servlet.jsp.tagext.TagSupport;
 
 public class SimpleTextAreaTag extends TagSupport {
 
+	private static final long serialVersionUID = 1L;
+
 	private String label;
 
 	private String name;
@@ -53,8 +55,7 @@ public class SimpleTextAreaTag extends TagSupport {
 		try {
 			if (null != form) {
 
-				m = form.getClass().getMethod("get" + this.name.substring(0, 1).toUpperCase() + this.name.substring(1),
-						null);
+				m = form.getClass().getMethod("get" + this.name.substring(0, 1).toUpperCase() + this.name.substring(1));
 
 				if (null != m) {
 					result = String.valueOf(m.invoke(form));

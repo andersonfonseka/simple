@@ -8,6 +8,8 @@ import javax.servlet.jsp.JspWriter;
 
 public class SimpleAlertTag extends SimpleTag {
 
+	private static final long serialVersionUID = 1L;
+	
 	public int doStartTag() throws JspException {
 		JspWriter out = pageContext.getOut();
 

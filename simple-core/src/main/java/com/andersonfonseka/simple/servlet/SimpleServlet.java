@@ -63,7 +63,7 @@ public class SimpleServlet extends HttpServlet {
 			try {
 
 				SimpleController simpleController = controllerMap.get(className);
-				Object controller = Class.forName(simpleController.getClassName()).newInstance();
+				Object controller = Class.forName(simpleController.getClassName()).getDeclaredConstructor().newInstance();
 
 				SimpleForm form = null;
 
@@ -75,7 +75,7 @@ public class SimpleServlet extends HttpServlet {
 
 				if (null == form) {
 					String formClassName = formMap.get(simpleController.getFormName()).getClassName();
-					form = (SimpleForm) Class.forName(formClassName).newInstance();
+					form = (SimpleForm) Class.forName(formClassName).getDeclaredConstructor().newInstance();
 				}
 
 				Enumeration<String> enumAttr = req.getParameterNames();

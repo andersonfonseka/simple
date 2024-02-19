@@ -12,6 +12,8 @@ import com.andersonfonseka.simple.taghandler.model.SelectItem;
 
 public class SimpleSelectTag extends TagSupport {
 
+	private static final long serialVersionUID = 1L;
+
 	private String label;
 
 	private String name;
@@ -20,11 +22,9 @@ public class SimpleSelectTag extends TagSupport {
 
 	private String type;
 
-	private String placeHolder;
-
 	private String items;
 
-	private List<SelectItem> selectItems = new ArrayList();
+	private List<SelectItem> selectItems = new ArrayList<SelectItem>();
 
 	public void setLabel(String label) {
 		this.label = label;
@@ -32,10 +32,6 @@ public class SimpleSelectTag extends TagSupport {
 
 	public void setType(String type) {
 		this.type = type;
-	}
-
-	public void setPlaceHolder(String placeHolder) {
-		this.placeHolder = placeHolder;
 	}
 
 	public void setName(String name) {
@@ -71,14 +67,13 @@ public class SimpleSelectTag extends TagSupport {
 			if (null != form) {
 
 				m = form.getClass()
-						.getMethod("get" + this.items.substring(0, 1).toUpperCase() + this.items.substring(1), null);
+						.getMethod("get" + this.items.substring(0, 1).toUpperCase() + this.items.substring(1));
 
 				if (null != m) {
 					this.selectItems = (List<SelectItem>) m.invoke(form);
 				}
 
-				m = form.getClass().getMethod("get" + this.name.substring(0, 1).toUpperCase() + this.name.substring(1),
-						null);
+				m = form.getClass().getMethod("get" + this.name.substring(0, 1).toUpperCase() + this.name.substring(1));
 
 				if (null != m) {
 					result = String.valueOf(m.invoke(form));

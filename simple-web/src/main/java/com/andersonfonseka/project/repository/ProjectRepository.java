@@ -42,7 +42,7 @@ public class ProjectRepository {
 	}
 
 	public List<Project> list() {
-		return new ArrayList(this.projects.values());
+		return new ArrayList<Project>(this.projects.values());
 	}
 
 
