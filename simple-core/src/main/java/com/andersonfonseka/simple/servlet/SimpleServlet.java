@@ -4,14 +4,21 @@ import java.io.IOException;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.reflections.Reflections;
+
+import com.andersonfonseka.simple.annotation.Controller;
+import com.andersonfonseka.simple.annotation.Form;
 import com.andersonfonseka.simple.controller.SimpleController;
+import com.andersonfonseka.simple.enums.ScopeEnum;
 import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.util.SimpleConfigParser;
 import com.andersonfonseka.simple.util.SimpleHandler;
@@ -21,14 +28,16 @@ public class SimpleServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		
+		Reflections reflections = new Reflections(req.getServletContext().getInitParameter("package"));
+		
 		if (req.getServletContext().getAttribute("controllerMap") == null) {
 			
 			try {
 				SimpleHandler handler = new SimpleHandler();
 				new SimpleConfigParser(req.getServletContext(), handler);
-				req.getServletContext().setAttribute("controllerMap", handler.getControllerMap());
-				req.getServletContext().setAttribute("formMap", handler.getFormMap());
+				req.getServletContext().setAttribute("controllerMap", loadControllers(reflections));
+				req.getServletContext().setAttribute("formMap", loadForm(reflections));
 				req.getServletContext().setAttribute("forwardMap", handler.getForwardMap());
 				req.getServletContext().setAttribute("tilesMap", handler.getTilesMap());
 			} catch (Exception e) {
@@ -38,6 +47,46 @@ public class SimpleServlet extends HttpServlet {
 
 		super.service(req, resp);
 
+	}
+
+	private Map<String, SimpleController> loadControllers(Reflections reflections) {
+		
+		Map<String, SimpleController> controllerMap = new HashMap<String, SimpleController>();
+		
+		Set<Class<?>> annotatedController = reflections.getTypesAnnotatedWith(Controller.class);
+		
+		for (Class<?> class1 : annotatedController) {
+			Controller annotation = class1.getDeclaredAnnotation(Controller.class);
+			
+			SimpleController simpleController = new SimpleController();
+			simpleController.setClassName(class1.getName());
+			simpleController.setName(annotation.name());
+			simpleController.setFormName(annotation.formName());
+			simpleController.setScope(annotation.scope().getScope());
+			
+			controllerMap.put(simpleController.getName(), simpleController);
+		}
+		
+		return controllerMap;
+	}
+	
+	private Map<String, SimpleForm> loadForm(Reflections reflections) {
+		
+		Map<String, SimpleForm> formMap = new HashMap<String, SimpleForm>();
+		
+		Set<Class<?>> annotatedForm = reflections.getTypesAnnotatedWith(Form.class);
+		
+		for (Class<?> class1 : annotatedForm) {
+			Form annotation = class1.getDeclaredAnnotation(Form.class);
+			
+			SimpleForm simpleForm = new SimpleForm();
+			simpleForm.setClassName(class1.getName());
+			simpleForm.setName(annotation.name());
+			
+			formMap.put(simpleForm.getName(), simpleForm);
+		}
+		
+		return formMap;
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

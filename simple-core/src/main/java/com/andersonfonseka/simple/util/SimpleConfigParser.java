@@ -10,7 +10,7 @@ public class SimpleConfigParser {
 
 	public SimpleConfigParser(ServletContext context, SimpleHandler handler) throws Exception {
 
-		SAXParserFactory factory = SAXParserFactory.newDefaultInstance();
+		SAXParserFactory factory = SAXParserFactory.newInstance();
 		SAXParser parser = factory.newSAXParser();
 
 		InputStream is = context.getResourceAsStream("/WEB-INF/simple-config.xml");
