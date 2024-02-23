@@ -9,7 +9,7 @@ import com.andersonfonseka.simple.enums.ScopeEnum;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface Controller {
+public @interface SController {
 
 	String name() default "";
 

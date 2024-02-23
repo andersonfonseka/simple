@@ -1,1 +1,1 @@
-<jsp:forward page="/projectController.do?op=load"></jsp:forward>
+<jsp:forward page="/ProjectController.do?op=load"></jsp:forward>

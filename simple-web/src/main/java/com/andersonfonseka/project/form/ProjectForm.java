@@ -4,29 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.andersonfonseka.project.model.Project;
-import com.andersonfonseka.simple.annotation.Form;
-import com.andersonfonseka.simple.annotation.Validate;
+import com.andersonfonseka.simple.annotation.SForm;
+import com.andersonfonseka.simple.annotation.SValidate;
 import com.andersonfonseka.simple.enums.ValidateEnum;
 import com.andersonfonseka.simple.form.SimpleForm;
 import com.andersonfonseka.simple.taghandler.model.SelectItem;
 
-@Form(name = "projectForm")
+@SForm
 public class ProjectForm extends SimpleForm {
 
 	private String id;
 
-	@Validate(types = { ValidateEnum.REQUIRED }, fieldName = "Name")
+	@SValidate(types = { ValidateEnum.REQUIRED }, fieldName = "Name")
 	private String name = "";
 
-	@Validate(types = { ValidateEnum.REQUIRED }, fieldName = "Description")
+	@SValidate(types = { ValidateEnum.REQUIRED }, fieldName = "Description")
 	private String description = "";
 
-	@Validate(types = { ValidateEnum.REQUIRED }, fieldName = "Management Approach")
+	@SValidate(types = { ValidateEnum.REQUIRED }, fieldName = "Management Approach")
 	private String approach;
 
 	private List<SelectItem> approachList = new ArrayList<>();
 
-	@Validate(types = { ValidateEnum.REQUIRED }, fieldName = "Management Framework")
+	@SValidate(types = { ValidateEnum.REQUIRED }, fieldName = "Management Framework")
 	private String framework = "";
 
 	private List<SelectItem> frameworkList = new ArrayList<>();

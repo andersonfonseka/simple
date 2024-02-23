@@ -5,7 +5,7 @@
 	version="3.1">
 	<servlet>
 		<servlet-name>simpleServlet</servlet-name>
-		<servlet-class>com.andersonfonseka.simple.servlet.SimpleServlet</servlet-class>
+		<servlet-class>com.andersonfonseka.simple.servlet.SimpleBaseController</servlet-class>
 		<init-param>
 			<param-name>package</param-name>
 			<param-value>com.andersonfonseka.project</param-value>

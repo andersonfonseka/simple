@@ -1,7 +1,7 @@
 <%@ taglib uri="http://simple.org/simple-taglib" prefix="s"%>
 
 <form name="projectForm" method="post"
-	action="../simple-web/projectController.do?op=create" >
+	action="../simple-web/ProjectController.do?op=create" >
 	<p>
 	<h2>Project</h2>
 	<div class="mb-3">
@@ -28,7 +28,7 @@
 	<hr />
 	<div class="mb-3">
 		<s:button title="Apply"></s:button>
-		<s:button type="button" title="Cancel" style="btn btn-danger" action="goUrl('./projectController.do?op=load');"></s:button>
+		<s:button type="button" title="Cancel" style="btn btn-danger" action="goUrl('./ProjectController.do?op=load');"></s:button>
 	</div>
 
 </form>

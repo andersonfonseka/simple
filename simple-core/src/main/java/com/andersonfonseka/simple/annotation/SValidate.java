@@ -9,7 +9,7 @@ import com.andersonfonseka.simple.enums.ValidateEnum;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.FIELD)
-public @interface Validate {
+public @interface SValidate {
 
 	String fieldName() default "";
 

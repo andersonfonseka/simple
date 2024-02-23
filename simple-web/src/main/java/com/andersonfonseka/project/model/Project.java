@@ -7,11 +7,13 @@ public class Project {
 	private String name = "";
 
 	private String description = "";
-	
+
 	private String approach = "";
 
 	private String framework = "";
-	
+
+	private String remove = "Remove";
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -51,5 +53,13 @@ public class Project {
 	public void setFramework(String framework) {
 		this.framework = framework;
 	}
-	
+
+	public String getRemove() {
+		return remove;
+	}
+
+	public void setRemove(String remove) {
+		this.remove = remove;
+	}
+
 }

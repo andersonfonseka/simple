@@ -15,24 +15,43 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.reflections.Reflections;
 
-import com.andersonfonseka.simple.annotation.Controller;
-import com.andersonfonseka.simple.annotation.Form;
+import com.andersonfonseka.simple.annotation.SController;
+import com.andersonfonseka.simple.annotation.SForm;
 import com.andersonfonseka.simple.controller.SimpleController;
-import com.andersonfonseka.simple.enums.ScopeEnum;
 import com.andersonfonseka.simple.form.SimpleForm;
+import com.andersonfonseka.simple.navigation.SimpleForward;
 import com.andersonfonseka.simple.util.SimpleConfigParser;
 import com.andersonfonseka.simple.util.SimpleHandler;
 
-public class SimpleServlet extends HttpServlet {
+public class SimpleBaseController extends HttpServlet {
+
+	private HttpServletRequest request;
+	private HttpServletResponse response;
 
 	private static final long serialVersionUID = 1L;
 
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+	public HttpServletResponse getResponse() {
+		return response;
+	}
+
+	public void setResponse(HttpServletResponse response) {
+		this.response = response;
+	}
+
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+
 		Reflections reflections = new Reflections(req.getServletContext().getInitParameter("package"));
-		
+
 		if (req.getServletContext().getAttribute("controllerMap") == null) {
-			
+
 			try {
 				SimpleHandler handler = new SimpleHandler();
 				new SimpleConfigParser(req.getServletContext(), handler);
@@ -49,47 +68,7 @@ public class SimpleServlet extends HttpServlet {
 
 	}
 
-	private Map<String, SimpleController> loadControllers(Reflections reflections) {
-		
-		Map<String, SimpleController> controllerMap = new HashMap<String, SimpleController>();
-		
-		Set<Class<?>> annotatedController = reflections.getTypesAnnotatedWith(Controller.class);
-		
-		for (Class<?> class1 : annotatedController) {
-			Controller annotation = class1.getDeclaredAnnotation(Controller.class);
-			
-			SimpleController simpleController = new SimpleController();
-			simpleController.setClassName(class1.getName());
-			simpleController.setName(annotation.name());
-			simpleController.setFormName(annotation.formName());
-			simpleController.setScope(annotation.scope().getScope());
-			
-			controllerMap.put(simpleController.getName(), simpleController);
-		}
-		
-		return controllerMap;
-	}
-	
-	private Map<String, SimpleForm> loadForm(Reflections reflections) {
-		
-		Map<String, SimpleForm> formMap = new HashMap<String, SimpleForm>();
-		
-		Set<Class<?>> annotatedForm = reflections.getTypesAnnotatedWith(Form.class);
-		
-		for (Class<?> class1 : annotatedForm) {
-			Form annotation = class1.getDeclaredAnnotation(Form.class);
-			
-			SimpleForm simpleForm = new SimpleForm();
-			simpleForm.setClassName(class1.getName());
-			simpleForm.setName(annotation.name());
-			
-			formMap.put(simpleForm.getName(), simpleForm);
-		}
-		
-		return formMap;
-	}
-
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
 
 		Map<String, SimpleController> controllerMap = null;
 		Map<String, SimpleForm> formMap = null;
@@ -112,7 +91,8 @@ public class SimpleServlet extends HttpServlet {
 			try {
 
 				SimpleController simpleController = controllerMap.get(className);
-				Object controller = Class.forName(simpleController.getClassName()).getDeclaredConstructor().newInstance();
+				Object controller = Class.forName(simpleController.getClassName()).getDeclaredConstructor()
+						.newInstance();
 
 				SimpleForm form = null;
 
@@ -153,9 +133,14 @@ public class SimpleServlet extends HttpServlet {
 					}
 				}
 
-				Method m = controller.getClass().getMethod(op,
-						new Class[] { HttpServletRequest.class, HttpServletResponse.class, SimpleForm.class });
-				m.invoke(controller, req, resp, form);
+				Method mRequest = controller.getClass().getMethod("setRequest",
+						new Class[] { HttpServletRequest.class });
+				mRequest.invoke(controller, req);
+
+				Method m = controller.getClass().getMethod(op, new Class[] { SimpleForm.class });
+				String forwardValue = String.valueOf(m.invoke(controller, form));
+
+				SimpleForward.doForward(forwardValue, req, resp);
 
 			} catch (Exception ex) {
 				ex.printStackTrace();
@@ -166,6 +151,57 @@ public class SimpleServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doGet(req, resp);
+	}
+
+	private Map<String, SimpleController> loadControllers(Reflections reflections) {
+
+		Map<String, SimpleController> controllerMap = new HashMap<String, SimpleController>();
+
+		Set<Class<?>> annotatedController = reflections.getTypesAnnotatedWith(SController.class);
+
+		for (Class<?> class1 : annotatedController) {
+			SController annotation = class1.getDeclaredAnnotation(SController.class);
+
+			SimpleController simpleController = new SimpleController();
+			simpleController.setClassName(class1.getName());
+
+			if (null != annotation.name() && annotation.name().trim().length() > 0) {
+				simpleController.setName(annotation.name());
+			} else {
+				simpleController.setName(class1.getSimpleName());
+			}
+
+			simpleController.setFormName(annotation.formName());
+			simpleController.setScope(annotation.scope().getScope());
+
+			controllerMap.put(simpleController.getName(), simpleController);
+		}
+
+		return controllerMap;
+	}
+
+	private Map<String, SimpleForm> loadForm(Reflections reflections) {
+
+		Map<String, SimpleForm> formMap = new HashMap<String, SimpleForm>();
+
+		Set<Class<?>> annotatedForm = reflections.getTypesAnnotatedWith(SForm.class);
+
+		for (Class<?> class1 : annotatedForm) {
+			SForm annotation = class1.getDeclaredAnnotation(SForm.class);
+
+			SimpleForm simpleForm = new SimpleForm();
+			simpleForm.setClassName(class1.getName());
+
+			if (null != annotation.name() && annotation.name().trim().length() > 0) {
+				simpleForm.setName(annotation.name());
+			} else {
+				simpleForm.setName(class1.getSimpleName());
+			}
+
+			formMap.put(simpleForm.getName(), simpleForm);
+		}
+
+		return formMap;
 	}
 
 }

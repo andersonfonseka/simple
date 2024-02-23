@@ -32,8 +32,7 @@ public class SimpleForward {
 		this.path = path;
 	}
 
-	public static void doForward(String name, HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+	public static void doForward(String name, HttpServletRequest req, HttpServletResponse resp) {
 
 		Map<String, SimpleForward> forwardMap = (Map<String, SimpleForward>) req.getServletContext()
 				.getAttribute("forwardMap");
@@ -54,7 +53,15 @@ public class SimpleForward {
 			}
 		}
 
-		req.getServletContext().getRequestDispatcher(simpleTiles.getPath()).forward(req, resp);
+		try {
+			req.getServletContext().getRequestDispatcher(simpleTiles.getPath()).forward(req, resp);
+		} catch (ServletException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

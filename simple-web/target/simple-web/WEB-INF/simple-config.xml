@@ -2,36 +2,27 @@
 
 <simple-config>
 
-	<!-- 
-	<simple-form name="projectForm" className="com.andersonfonseka.project.form.ProjectForm"/>
-	
-	<simple-controller name="projectController" 
-					   className="com.andersonfonseka.project.controller.ProjectController"
-					   formName="projectForm"
-					   scope="request"/>
-    -->
-
-	<simple-tiles definition="layout.tiles" path="/pages/layout/layout.jsp">
+	<simple-tiles definition="layout" path="/pages/layout/layout.jsp">
 		<simple-tiles-fragment id="top" path="/pages/layout/header.jsp"/>
 		<simple-tiles-fragment id="menu" path="/pages/layout/menu.jsp"/>
 		<simple-tiles-fragment id="bottom" path="/pages/layout/footer.jsp"/>
 	</simple-tiles>
 	
-	<simple-tiles definition="project.tiles" extend="layout.tiles">
+	<simple-tiles definition="project" extend="layout">
 		<simple-tiles-fragment id="body" path="/pages/project/project.jsp"/>
 	</simple-tiles>
 
-	<simple-tiles definition="projectCreate.tiles" extend="layout.tiles">
+	<simple-tiles definition="projectCreate" extend="layout">
 		<simple-tiles-fragment id="body" path="/pages/project/projectCreate.jsp"/>
 	</simple-tiles>
 
-	<simple-tiles definition="projectUpdate.tiles" extend="layout.tiles">
+	<simple-tiles definition="projectUpdate" extend="layout">
 		<simple-tiles-fragment id="body" path="/pages/project/projectUpdate.jsp"/>
 	</simple-tiles>
 
 	
-	<simple-forward name="project" path="project.tiles"/>
-	<simple-forward name="projectCreate" path="projectCreate.tiles"/>
-	<simple-forward name="projectUpdate" path="projectUpdate.tiles"/>
+	<simple-forward name="project" path="project"/>
+	<simple-forward name="projectCreate" path="projectCreate"/>
+	<simple-forward name="projectUpdate" path="projectUpdate"/>
 
 </simple-config>

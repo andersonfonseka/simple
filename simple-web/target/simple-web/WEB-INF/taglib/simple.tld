@@ -170,6 +170,10 @@
 			<name>action</name>
 			<required>false</required>
 		</attribute>
+		<attribute>
+			<name>style</name>
+			<required>false</required>
+		</attribute>
 	</tag>
 	<tag>
 		<name>param</name>

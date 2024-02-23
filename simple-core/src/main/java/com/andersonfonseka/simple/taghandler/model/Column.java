@@ -13,6 +13,8 @@ public class Column {
 
 	private String action = "";
 
+	private String style = "btn btn-link";
+
 	private Map<String, Param> params = new HashMap<String, Param>();
 
 	public String getProperty() {
@@ -45,6 +47,14 @@ public class Column {
 
 	public void setParams(Map<String, Param> params) {
 		this.params = params;
+	}
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
 	}
 
 }

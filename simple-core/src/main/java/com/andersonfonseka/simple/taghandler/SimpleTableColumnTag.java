@@ -17,6 +17,8 @@ public class SimpleTableColumnTag extends TagSupport {
 
 	private String title;
 
+	private String style = "btn btn-link";
+
 	private String action;
 
 	private Map<String, Param> params = new HashMap<String, Param>();
@@ -36,6 +38,7 @@ public class SimpleTableColumnTag extends TagSupport {
 		column.setProperty(this.property);
 		column.setAction(this.action);
 		column.setParams(this.params);
+		column.setStyle(this.style);
 
 		tag.addColumn(column);
 
@@ -79,6 +82,14 @@ public class SimpleTableColumnTag extends TagSupport {
 
 	public void addParam(Param pParam) {
 		this.params.put(pParam.getId(), pParam);
+	}
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
 	}
 
 }
