@@ -1,5 +1,7 @@
-com\andersonfonseka\project\controller\ProjectController.class
 com\andersonfonseka\project\model\Project.class
+com\andersonfonseka\project\controller\LoginController.class
+com\andersonfonseka\project\controller\ProjectController.class
+com\andersonfonseka\project\form\LoginForm.class
 com\andersonfonseka\project\form\ProjectForm.class
 com\andersonfonseka\project\mapping\ProjectMapping.class
 com\andersonfonseka\project\repository\ProjectRepository.class

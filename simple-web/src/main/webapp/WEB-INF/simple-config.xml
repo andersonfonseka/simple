@@ -2,10 +2,20 @@
 
 <simple-config>
 
+	<simple-tiles definition="loginlayout" path="/pages/layout/loginlayout.jsp">
+		<simple-tiles-fragment id="top" path="/pages/layout/header.jsp"/>
+		<simple-tiles-fragment id="bottom" path="/pages/layout/footer.jsp"/>
+	</simple-tiles>
+
+
 	<simple-tiles definition="layout" path="/pages/layout/layout.jsp">
 		<simple-tiles-fragment id="top" path="/pages/layout/header.jsp"/>
 		<simple-tiles-fragment id="menu" path="/pages/layout/menu.jsp"/>
 		<simple-tiles-fragment id="bottom" path="/pages/layout/footer.jsp"/>
+	</simple-tiles>
+	
+	<simple-tiles definition="login" extend="loginlayout">
+		<simple-tiles-fragment id="body" path="/pages/login.jsp"/>
 	</simple-tiles>
 	
 	<simple-tiles definition="project" extend="layout">
@@ -20,6 +30,7 @@
 		<simple-tiles-fragment id="body" path="/pages/project/projectUpdate.jsp"/>
 	</simple-tiles>
 
+	<simple-forward name="login" path="login"/>
 	
 	<simple-forward name="project" path="project"/>
 	<simple-forward name="projectCreate" path="projectCreate"/>

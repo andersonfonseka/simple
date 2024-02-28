@@ -16,6 +16,10 @@
 			<s:column property="description" title="DESCRIPTION"></s:column>
 			<s:column property="approach" title="APPROACH"></s:column>
 			<s:column property="framework" title="FRAMEWORK"></s:column>
+			<s:column property="remove" title="ACTION" style="btn btn-danger"
+				action="../simple-web/ProjectController.do?op=startUpdate">
+				<s:param property="id" id="id"></s:param>
+			</s:column>
 		</s:table>
 	</div>
 </form>
