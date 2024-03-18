@@ -1,17 +1,21 @@
-exiba todos os requisitos funcionais obrigatórios e desejáveis para um sistema de seguros de automoveis, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras.
+exiba todos os requisitos funcionais obrigatórios e desejáveis para {0} .
 
-descreva detalhadamente todos os requisitos funcionais para um sistema de seguros de automoveis dentro da área logada, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras.
+descreva detalhadamente todos os requisitos funcionais para {0} .
 
-crie uma lista para todas as funcionalidades de um sistema de seguros de automoveis, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras.
+crie uma lista para todas as funcionalidades para {0} .
 
-crie uma lista com casos de testes, cenários de sucesso e possíveis cenários de erros, e passos para todas as funcionalidades para um sistema de seguros de automoveis dentro da área logada, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras.
+crie uma lista com casos de testes, cenários de sucesso e cenários de erros, e passos para todas as funcionalidades de {0}.
 
-descreva detalhadamente a quantidade de perfis necessária para testar todos os requisitos funcionais para um sistema de seguros de automoveis, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras.
+descreva detalhadamente a quantidade de perfis necessários para testar todos os requisitos funcionais para {0}.
 
-descreva detalhadamente a equipe de testes necessária para testar todos os requisitos funcionais para um sistema de seguros de automoveis, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras.
+descreva detalhadamente a equipe de testes necessária para testar todos os requisitos funcionais de {0}.
 
-calcule o prazo estimado para uma equipe de testes testar todas os requisitos funcionais para um sistema de seguros de automoveis, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras.
+calcule o prazo estimado para uma equipe de testes testar todas os requisitos funcionais para {0}.
 
-calcule o custo médio estimado para uma equipe de testes testar todas os requisitos funcionais para um sistema de seguros de automoveis, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras.
+calcule o custo médio estimado para uma equipe de testes testar todas os requisitos funcionais para {0}.
 
-crie um diagrama de fluxo de todas funcionalidades detalhadas para um sistema de seguros de automoveis, incluindo: riscos, renovação, cadastro do cliente, acessos, sinistros, cancelamento em mermaid js
+crie um diagrama de fluxo para cada funcionalidade de {0} em mermaid js
+
+Elabore um plano de testes incluindo cenários de sucesso, insucesso e passos para a funcionalidade {0} de {1}.
+
+um sistema de seguros de automoveis, incluindo: cotação, perfis, riscos, renovação, cadastros, acessos, sinistros, cancelamento, dentre outras

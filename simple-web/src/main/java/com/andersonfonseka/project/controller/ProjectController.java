@@ -4,6 +4,7 @@ import com.andersonfonseka.project.form.ProjectForm;
 import com.andersonfonseka.project.mapping.ProjectMapping;
 import com.andersonfonseka.project.model.Project;
 import com.andersonfonseka.project.repository.ProjectRepository;
+import com.andersonfonseka.project.service.GPTService;
 import com.andersonfonseka.simple.annotation.SController;
 import com.andersonfonseka.simple.enums.ScopeEnum;
 import com.andersonfonseka.simple.form.SimpleForm;
@@ -61,10 +62,22 @@ public class ProjectController extends SimpleBaseController {
 		getRequest().setAttribute("projectForm", projectForm);
 
 		if (form.doValidate(getRequest()).isEmpty()) {
-			this.projectRepository.add(new ProjectMapping().getMapping(projectForm));
+
+			Project project = new ProjectMapping().getMapping(projectForm);
+
+			String sentenca = "Crie uma descrição expandida para " + project.getDescription();
+
+			try {
+				project.setExpandedDescription(new GPTService().generate(sentenca));
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			this.projectRepository.add(project);
 		}
 
-		return "projectCreate";
+		return "project";
 	}
 
 	public String startUpdate(SimpleForm form) {

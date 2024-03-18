@@ -8,9 +8,7 @@ public class Project {
 
 	private String description = "";
 
-	private String approach = "";
-
-	private String framework = "";
+	private String expandedDescription;
 
 	private String remove = "Remove";
 
@@ -38,20 +36,12 @@ public class Project {
 		this.description = description;
 	}
 
-	public String getApproach() {
-		return approach;
+	public String getExpandedDescription() {
+		return expandedDescription;
 	}
 
-	public void setApproach(String approach) {
-		this.approach = approach;
-	}
-
-	public String getFramework() {
-		return framework;
-	}
-
-	public void setFramework(String framework) {
-		this.framework = framework;
+	public void setExpandedDescription(String expandedDescription) {
+		this.expandedDescription = expandedDescription;
 	}
 
 	public String getRemove() {

@@ -14,17 +14,7 @@
 			property="projectForm"
 			placeHolder="'Type the project description here...'" />
 	</div>
-
-	<div class="mb-3">
-		<s:select label="Management Approach" name="approach"
-			property="projectForm" items="approachList" />
-	</div>
-
-	<div class="mb-3">
-		<s:radio label="Management Framework" name="framework"
-			property="projectForm" items="frameworkList" />
-	</div>
-
+	
 	<hr />
 	<div class="mb-3">
 		<s:button title="Apply"></s:button>
