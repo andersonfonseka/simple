@@ -1,0 +1,26 @@
+{"id": "chatcmpl-93vcDD03TT942hpSNCXq1bqN5SXfl","object": "chat.completion","created": 1710723485,"model": "gpt-3.5-turbo-0125","choices": [{"index": 0,"message": {"role": "assistant","content": "Requisitos funcionais obrigatórios:
+
+1. Cotação de seguro de automóveis
+2. Cadastro de clientes
+3. Cadastro de veículos
+4. Avaliação de riscos
+5. Cálculo de prêmios
+6. Emissão de apólices
+7. Renovação de apólices
+8. Registro de sinistros
+9. Atendimento de sinistros
+10. Cancelamento de apólices
+11. Acesso seguro através de login e senha
+
+Requisitos funcionais desejáveis:
+
+1. Perfis de usuários com diferentes níveis de acesso
+2. Aviso de vencimento de apólices
+3. Integração com seguradoras parceiras
+4. Envio de documentos por meio digital
+5. Acompanhamento do status de sinistros em tempo real
+6. Notificações sobre alterações na apólice
+7. Possibilidade de simulação de diferentes coberturas
+8. Cálculo de descontos e bônus para renovações
+9. Chat online para suporte ao cliente
+10. Personalização de seguros de acordo com o perfil do cliente"},"logprobs": null,"finish_reason": "stop"}],"usage": {"prompt_tokens": 69,"completion_tokens": 251,"total_tokens": 320},"system_fingerprint": "fp_4f2ebda25a"}
