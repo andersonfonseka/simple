@@ -12,21 +12,22 @@ public class ProjectMapping {
 		project.setId(form.getId());
 		project.setName(form.getName());
 		project.setDescription(form.getDescription());
-		project.setExpandedDescription(form.getExpandedDescription());
 
 		return project;
 	}
 
 	public ProjectForm getMapping(Project proj) {
 
-		ProjectForm projectForm = new ProjectForm();
+		ProjectForm form = new ProjectForm();
 
-		projectForm.setId(proj.getId());
-		projectForm.setName(proj.getName());
-		projectForm.setDescription(proj.getDescription());
-		projectForm.setExpandedDescription(proj.getExpandedDescription());
+		form.setId(proj.getId());
+		form.setName(proj.getName());
+		form.setDescription(proj.getDescription());
+		form.setExpandedDescription(proj.getExpandedDescription());
+		form.setFuncionalities(proj.getFuncionalities());
+		form.setTestCases(proj.getTestScenarios());
 
-		return projectForm;
+		return form;
 	}
 
 }

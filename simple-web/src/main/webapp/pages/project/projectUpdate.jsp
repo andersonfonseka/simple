@@ -18,13 +18,6 @@
 			placeHolder="'Type the project description here...'" />
 	</div>
 	
-	<div class="mb-3">
-		<s:textarea rows="100" label="Expanded Description" name="expandedDescription"
-			property="projectForm"
-			placeHolder=""/>
-	</div>
-
-	
 	<hr />
 	<div class="mb-3">
 		<s:button title="Apply"></s:button>

@@ -16,14 +16,18 @@ public class SimpleParamTag extends TagSupport {
 	@Override
 	public int doStartTag() throws JspException {
 
-		SimpleTableColumnTag tag = (SimpleTableColumnTag) getParent();
-
 		Param param = new Param();
 
 		param.setId(this.id);
 		param.setProperty(this.property);
 
-		tag.addParam(param);
+		if (getParent() instanceof SimpleTableColumnTag) {
+			SimpleTableColumnTag tag = (SimpleTableColumnTag) getParent();
+			tag.addParam(param);
+		} else {
+			SimpleButtonTag tag = (SimpleButtonTag) getParent();
+			tag.addParam(param);
+		}
 
 		return EVAL_BODY_INCLUDE;
 	}

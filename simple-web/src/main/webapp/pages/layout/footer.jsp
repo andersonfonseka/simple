@@ -5,3 +5,5 @@
 		
 	<script
 		src="js/simple.js"></script>
+		
+	<script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs"></script>

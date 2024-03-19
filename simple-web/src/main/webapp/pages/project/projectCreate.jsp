@@ -3,7 +3,7 @@
 <form name="projectForm" method="post"
 	action="../simple-web/ProjectController.do?op=create" >
 	<p>
-	<h2>Project</h2>
+	<h2>Projetos</h2>
 	<div class="mb-3">
 		<s:input label="Name" name="name" property="projectForm"
 			type="text" placeHolder="'Type your name here...'"/>
@@ -17,8 +17,8 @@
 	
 	<hr />
 	<div class="mb-3">
-		<s:button title="Apply"></s:button>
-		<s:button type="button" title="Cancel" style="btn btn-danger" action="goUrl('./ProjectController.do?op=load');"></s:button>
+		<s:button title="Salvar"></s:button>
+		<s:button type="button" title="Cancelar" style="btn btn-danger" action="goUrl('./ProjectController.do?op=load');"></s:button>
 	</div>
 
 </form>

@@ -3,21 +3,21 @@
 <form name="loginForm" method="post"
 	action="../simple-web/LoginController.do?op=login" >
 	<p>
-	<h2>Access</h2>
+	<h2>Accesso</h2>
 	<div class="mb-3">
-		<s:input label="Username" name="username" property="loginForm"
+		<s:input label="Usuário" name="username" property="loginForm"
 			type="text" placeHolder="'Type your username here...'"/>
 	</div>
 
 	<div class="mb-3">
-		<s:input label="Password" name="password" property="loginForm"
+		<s:input label="Senha" name="password" property="loginForm"
 			type="password" placeHolder="'Type your password here...'"/>
 	</div>
 
 
 	<hr />
 	<div class="mb-3">
-		<s:button title="Connect"></s:button>
+		<s:button title="Conectar"></s:button>
 	</div>
 
 </form>

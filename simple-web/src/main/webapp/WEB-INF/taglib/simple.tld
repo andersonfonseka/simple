@@ -8,7 +8,20 @@
 	<jsp-version>1.2</jsp-version>
 	<short-name>simple</short-name>
 	<uri>http://simple.org/simple-taglib</uri>
-	<description>A Simple input tag library</description>
+	<description>A Simple tag library</description>
+	
+	<tag>
+		<name>content</name>
+		<tag-class>com.andersonfonseka.simple.taghandler.SimpleContentTag</tag-class>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+		</attribute>
+		<attribute>
+			<name>property</name>
+			<required>true</required>
+		</attribute>
+	</tag>
 
 	<tag>
 		<name>textarea</name>
@@ -194,6 +207,10 @@
 	<tag>
 		<name>button</name>
 		<tag-class>com.andersonfonseka.simple.taghandler.SimpleButtonTag</tag-class>
+		<attribute>
+			<name>name</name>
+			<required>false</required>
+		</attribute>
 		<attribute>
 			<name>type</name>
 			<required>false</required>

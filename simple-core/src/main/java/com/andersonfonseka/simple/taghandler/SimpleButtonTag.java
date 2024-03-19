@@ -1,10 +1,18 @@
 package com.andersonfonseka.simple.taghandler;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
+
+import com.andersonfonseka.simple.taghandler.model.Button;
+import com.andersonfonseka.simple.taghandler.model.Param;
 
 public class SimpleButtonTag extends TagSupport {
 
@@ -18,34 +26,77 @@ public class SimpleButtonTag extends TagSupport {
 
 	private String action = "";
 
+	private String name = "";
+
+	private Map<String, Param> params = new HashMap<String, Param>();
+
 	@Override
 	public int doStartTag() throws JspException {
 
-		JspWriter out = pageContext.getOut();
+		Button btn = new Button();
 
-		try {
-
-			if (this.action.length() > 0) {
-				out.print("<button type=\"" + this.type + "\" class=\"" + this.style + "\" onclick=\"" + this.action
-						+ "\">" + this.title + "</button>");
-			} else {
-				out.print(
-						"<button type=\"" + this.type + "\" class=\"" + this.style + "\">" + this.title + "</button>");
-
-			}
-
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		btn.setTitle(this.title);
+		btn.setAction(this.action);
+		btn.setParams(this.params);
+		btn.setStyle(this.style);
 
 		return EVAL_BODY_INCLUDE;
+
 	}
 
 	@Override
 	public int doEndTag() throws JspException {
-		// TODO Auto-generated method stub
+
+		JspWriter out = pageContext.getOut();
+
+		StringBuilder sb = new StringBuilder();
+
+		Object form = pageContext.getRequest().getAttribute(this.name);
+
+		try {
+
+			if (getAction() != null && getAction().trim().length() > 0 && !getParams().isEmpty()) {
+
+				StringBuilder builder = new StringBuilder();
+
+				if (null != getParams() && !getParams().isEmpty()) {
+					for (Param param : getParams()) {
+
+						Method m = form.getClass().getMethod("get" + param.getProperty());
+						String value = "";
+
+						if (null != m) {
+							value = String.valueOf(m.invoke(form));
+						}
+
+						builder.append("&" + param.getId() + "=" + value);
+					}
+
+					sb.append("<button type=\"button\" class=\"" + getStyle() + "\" onclick=goUrl('" + getAction()
+							+ builder.toString() + "');>" + this.title + "</button>\n");
+
+				}
+
+			} else if (getAction() != null && getAction().trim().length() > 0 && getParams().isEmpty()) {
+				sb.append("<button type=\"button\" class=\"" + getStyle() + "\" onclick=goUrl('" + getAction() + "');>"
+						+ this.title + "</button>\n");
+			} else {
+				sb.append("<button type=\"submit\" class=\"" + getStyle() + "\">" + this.title + "</button></td>\n");
+			}
+
+			try {
+				out.print(sb.toString());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 		return super.doEndTag();
+
 	}
 
 	@Override
@@ -83,6 +134,22 @@ public class SimpleButtonTag extends TagSupport {
 
 	public void setAction(String action) {
 		this.action = action;
+	}
+
+	public void addParam(Param pParam) {
+		this.params.put(pParam.getId(), pParam);
+	}
+
+	public List<Param> getParams() {
+		return new ArrayList<Param>(this.params.values());
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

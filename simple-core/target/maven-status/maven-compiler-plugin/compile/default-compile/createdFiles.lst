@@ -16,6 +16,7 @@ com\andersonfonseka\simple\validation\RequiredValidator.class
 com\andersonfonseka\simple\taghandler\SimpleTextAreaTag.class
 com\andersonfonseka\simple\taghandler\SimpleRadioTag.class
 com\andersonfonseka\simple\taghandler\SimpleTag.class
+com\andersonfonseka\simple\taghandler\model\Button.class
 com\andersonfonseka\simple\servlet\SimpleBaseController.class
 com\andersonfonseka\simple\annotation\SValidate.class
 com\andersonfonseka\simple\taghandler\SimpleSelectTag.class
@@ -30,3 +31,4 @@ com\andersonfonseka\simple\taghandler\SimpleTableColumnTag.class
 com\andersonfonseka\simple\taghandler\SimpleCheckTag.class
 com\andersonfonseka\simple\enums\ScopeEnum.class
 com\andersonfonseka\simple\form\SimpleForm.class
+com\andersonfonseka\simple\taghandler\SimpleContentTag.class

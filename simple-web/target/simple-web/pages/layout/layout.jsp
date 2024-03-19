@@ -5,19 +5,16 @@
 <jsp:include page="${top}" />
 
 <body>
-	<div class="container-fluid">
-		 <div class="row">
-			<div class="col-3">
-				<jsp:include page="${menu}" />
-			</div>
-			<div class="col-9">
+	<s:alert></s:alert>
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
 				<p>
-				<s:alert></s:alert>
-				<jsp:include page="${body}" />
+					<jsp:include page="${body}" />
 			</div>
 		</div>
 	</div>
 
 </body>
-	<jsp:include page="${bottom}" />
+<jsp:include page="${bottom}" />
 </html>

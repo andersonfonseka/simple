@@ -9,13 +9,14 @@ import java.util.UUID;
 import com.andersonfonseka.project.model.Project;
 
 public class ProjectRepository {
-	
+
 	private static ProjectRepository INSTANCE;
-	
+
 	private Map<String, Project> projects = new HashMap<>();
-		
-	private ProjectRepository() {}
-	
+
+	private ProjectRepository() {
+	}
+
 	public static ProjectRepository getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new ProjectRepository();
@@ -23,16 +24,17 @@ public class ProjectRepository {
 
 		return INSTANCE;
 	}
-	
-	public void add(Project project) {
+
+	public Project add(Project project) {
 		project.setId(UUID.randomUUID().toString());
 		this.projects.put(project.getId(), project);
+		return project;
 	}
-	
+
 	public Project get(String id) {
 		return this.projects.get(id);
 	}
-	
+
 	public void edit(Project project) {
 		this.projects.put(project.getId(), project);
 	}
@@ -44,6 +46,5 @@ public class ProjectRepository {
 	public List<Project> list() {
 		return new ArrayList<Project>(this.projects.values());
 	}
-
 
 }

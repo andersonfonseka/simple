@@ -1,0 +1,22 @@
+## Requisitos funcionais para um sistema de seguros de automóveis:
+
+### Obrigatórios:
+1. Criação de perfis de usuários (segurados, corretores, administradores).
+2. Cadastro de veículos segurados com informações detalhadas.
+3. Realização de cotações de seguro de automóveis.
+4. Análise de riscos baseada nas informações dos veículos e dos segurados.
+5. Renovação automática de apólices de seguro.
+6. Registro de sinistros e acompanhamento do processo de indenização.
+7. Possibilidade de cancelamento de apólices de seguro.
+8. Controle de acesso dos usuários com diferentes níveis de permissão.
+9. Geração de relatórios de desempenho e estatísticas do sistema.
+
+### Desejáveis:
+1. Integração com sistemas externos de consulta e verificação de informações dos veículos.
+2. Funcionalidade de chat online para tirar dúvidas e fornecer suporte aos usuários.
+3. Personalização das apólices de seguro com adição de coberturas extras.
+4. Notificações automáticas de vencimentos de apólices e sinistros em andamento.
+5. Cálculo automático de reajuste de valores de seguro com base em variáveis de mercado.
+6. Possibilidade de contratação de seguros adicionais para terceiros e acessórios do veículo.
+7. Integração com sistemas de pagamento online para facilitar a realização de pagamentos de apólices.
+8. Funcionalidade de agendamento de vistorias e manutenções preventivas dos veículos segurados.

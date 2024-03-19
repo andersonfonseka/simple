@@ -1,5 +1,8 @@
 package com.andersonfonseka.project.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Project {
 
 	private String id;
@@ -9,6 +12,12 @@ public class Project {
 	private String description = "";
 
 	private String expandedDescription;
+
+	private String funcionalities;
+
+	private List<TestScenario> testScenarios = new ArrayList();
+
+	private List<TestScenarioDiagram> testScenariosDiagram = new ArrayList();
 
 	private String remove = "Remove";
 
@@ -42,6 +51,30 @@ public class Project {
 
 	public void setExpandedDescription(String expandedDescription) {
 		this.expandedDescription = expandedDescription;
+	}
+
+	public String getFuncionalities() {
+		return funcionalities;
+	}
+
+	public void setFuncionalities(String funcionalities) {
+		this.funcionalities = funcionalities;
+	}
+
+	public List<TestScenario> getTestScenarios() {
+		return testScenarios;
+	}
+
+	public void addTestScenarios(TestScenario testScenarios) {
+		this.testScenarios.add(testScenarios);
+	}
+
+	public List<TestScenarioDiagram> getTestScenariosDiagram() {
+		return testScenariosDiagram;
+	}
+
+	public void addTestScenariosDiagram(TestScenarioDiagram testScenariosDiagram) {
+		this.testScenariosDiagram.add(testScenariosDiagram);
 	}
 
 	public String getRemove() {

@@ -149,9 +149,6 @@ public class SimpleTableTag extends TagSupport {
 							sb.append("<td><button type=\"button\" class=\"" + col.getStyle() + "\" onclick=goUrl('"
 									+ col.getAction() + builder.toString() + "');>" + result + "</button></td>\n");
 
-//							sb.append("<td><a href=\"" + col.getAction() + builder.toString() + "\">" + result
-//									+ "</a></td>\n");
-
 						}
 
 					} else {

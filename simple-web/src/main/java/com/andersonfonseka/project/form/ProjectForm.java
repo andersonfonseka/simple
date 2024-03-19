@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.andersonfonseka.project.model.Project;
+import com.andersonfonseka.project.model.TestScenario;
 import com.andersonfonseka.simple.annotation.SForm;
 import com.andersonfonseka.simple.annotation.SValidate;
 import com.andersonfonseka.simple.enums.ValidateEnum;
 import com.andersonfonseka.simple.form.SimpleForm;
+import com.youbenzi.mdtool.tool.MDTool;
 
 @SForm
 public class ProjectForm extends SimpleForm {
@@ -22,7 +24,13 @@ public class ProjectForm extends SimpleForm {
 
 	private String expandedDescription;
 
+	private String funcionalities;
+
 	private List<Project> projects = new ArrayList<Project>();
+
+	private List<TestScenario> testCases = new ArrayList<TestScenario>();
+
+	private TestScenario testScenario;
 
 	public String getId() {
 		return id;
@@ -62,6 +70,30 @@ public class ProjectForm extends SimpleForm {
 
 	public void setProjects(List<Project> projects) {
 		this.projects = projects;
+	}
+
+	public String getFuncionalities() {
+		return MDTool.markdown2Html(funcionalities);
+	}
+
+	public void setFuncionalities(String funcionalities) {
+		this.funcionalities = funcionalities;
+	}
+
+	public List<TestScenario> getTestCases() {
+		return testCases;
+	}
+
+	public void setTestCases(List<TestScenario> testCases) {
+		this.testCases = testCases;
+	}
+
+	public TestScenario getTestScenario() {
+		return testScenario;
+	}
+
+	public void setTestScenario(TestScenario testScenario) {
+		this.testScenario = testScenario;
 	}
 
 }
