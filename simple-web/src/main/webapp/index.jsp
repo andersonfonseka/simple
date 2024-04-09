@@ -1,1 +1,0 @@
-<jsp:forward page="/LoginController.do?op=load"></jsp:forward>
