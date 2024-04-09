@@ -9,7 +9,7 @@ import javax.servlet.jsp.JspWriter;
 public class SimpleAlertTag extends SimpleTag {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public int doStartTag() throws JspException {
 		JspWriter out = pageContext.getOut();
 
@@ -18,8 +18,8 @@ public class SimpleAlertTag extends SimpleTag {
 		StringBuilder sb = new StringBuilder();
 
 		if (null != values && !values.isEmpty()) {
-			sb.append("<div class=\"alert alert-warning\" role=\"alert\">"
-					+ "<h4 class=\"alert-heading\">Message</h4><hr>" + "<ul>");
+			sb.append("<div class=\"alert alert-light\" role=\"alert\">"
+					+ "<h5 class=\"alert-heading\">Mensagem</h5><hr>" + "<ul>");
 			for (String msg : values) {
 
 				sb.append("<li>" + msg + "</li>");

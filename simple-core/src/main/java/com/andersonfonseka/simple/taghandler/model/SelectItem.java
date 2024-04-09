@@ -1,6 +1,6 @@
 package com.andersonfonseka.simple.taghandler.model;
 
-public class SelectItem {
+public class SelectItem implements Comparable<SelectItem> {
 
 	private String value;
 
@@ -28,6 +28,11 @@ public class SelectItem {
 
 	public void setSelected(boolean selected) {
 		this.selected = selected;
+	}
+
+	@Override
+	public int compareTo(SelectItem o) {
+		return this.getLabel().compareTo(o.getLabel());
 	}
 
 }

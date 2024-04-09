@@ -14,13 +14,13 @@ import javax.servlet.jsp.tagext.TagSupport;
 import com.andersonfonseka.simple.taghandler.model.Button;
 import com.andersonfonseka.simple.taghandler.model.Param;
 
-public class SimpleButtonTag extends TagSupport {
+public class SimpleLinkTag extends TagSupport {
 
 	private static final long serialVersionUID = 1L;
 
 	private String type = "submit";
 
-	private String style = "btn btn-primary";
+	private String style = "bd-links-link d-inline-block rounded";
 
 	private String title = "";
 
@@ -79,16 +79,16 @@ public class SimpleButtonTag extends TagSupport {
 
 					}
 
-					sb.append("<button type=\"button\" class=\"" + getStyle() + "\" onclick=goUrl('" + getAction()
-							+ builder.toString() + "');>" + this.title + "</button>\n");
+					sb.append("<a href=\"#\"  class=\"" + getStyle() + "\" onclick=goUrl('" + getAction()
+							+ builder.toString() + "');>" + this.title + "</a>\n");
+
+					getParams().clear();
 
 				}
 
 			} else if (getAction() != null && getAction().trim().length() > 0 && getParams().isEmpty()) {
-				sb.append("<button type=\"button\" class=\"" + getStyle() + "\" onclick=goUrl('" + getAction() + "');>"
-						+ this.title + "</button>\n");
-			} else {
-				sb.append("<button type=\"submit\" class=\"" + getStyle() + "\">" + this.title + "</button></td>\n");
+				sb.append("<a href=\"#\" class=\"" + getStyle() + "\" onclick=goUrl('" + getAction() + "');>"
+						+ this.title + "</a>\n");
 			}
 
 			try {

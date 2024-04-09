@@ -6,6 +6,8 @@ public class Param {
 
 	private String property;
 
+	private String value;
+
 	private String title;
 
 	public String getId() {
@@ -17,7 +19,11 @@ public class Param {
 	}
 
 	public String getProperty() {
-		return this.property.substring(0, 1).toUpperCase() + this.property.substring(1);
+		if (null != this.property) {
+			return this.property.substring(0, 1).toUpperCase() + this.property.substring(1);
+		}
+
+		return "";
 	}
 
 	public void setProperty(String property) {
@@ -30,6 +36,14 @@ public class Param {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }

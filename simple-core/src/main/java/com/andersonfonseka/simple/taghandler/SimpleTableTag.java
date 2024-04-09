@@ -126,8 +126,28 @@ public class SimpleTableTag extends TagSupport {
 			for (Column col : columns) {
 
 				try {
-					Method mProperty = obj.getClass().getDeclaredMethod(col.getProperty());
-					String result = String.valueOf(mProperty.invoke(obj));
+
+					String result = "";
+
+					if (col.getProperty().contains(":")) {
+
+						String[] properties = col.getProperty().split(":");
+
+						Method mProperty = obj.getClass().getDeclaredMethod(properties[0]);
+						Object objProp = mProperty.invoke(obj);
+
+						String innerProperty = "get" + properties[1].substring(0, 1).toUpperCase()
+								+ properties[1].substring(1);
+
+						Method mInnerProperty = objProp.getClass().getDeclaredMethod(innerProperty);
+						result = String.valueOf(mInnerProperty.invoke(objProp));
+
+					} else {
+
+						Method mProperty = obj.getClass().getDeclaredMethod(col.getProperty());
+						result = String.valueOf(mProperty.invoke(obj));
+
+					}
 
 					if (col.getAction() != null && col.getAction().trim().length() > 0) {
 
@@ -146,8 +166,8 @@ public class SimpleTableTag extends TagSupport {
 								builder.append("&" + param.getId() + "=" + value);
 							}
 
-							sb.append("<td><button type=\"button\" class=\"" + col.getStyle() + "\" onclick=goUrl('"
-									+ col.getAction() + builder.toString() + "');>" + result + "</button></td>\n");
+							sb.append("<td><a href=\"#\" class=\"" + col.getStyle() + "\" onclick=goUrl('"
+									+ col.getAction() + builder.toString() + "');>" + result + "</a></td>\n");
 
 						}
 

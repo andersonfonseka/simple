@@ -6,6 +6,7 @@ com\andersonfonseka\simple\taghandler\SimpleAlertTag.class
 com\andersonfonseka\simple\util\SimpleConfigParser.class
 com\andersonfonseka\simple\taghandler\SimpleParamTag.class
 com\andersonfonseka\simple\validation\ValidatorMessage.class
+com\andersonfonseka\simple\taghandler\SimpleLinkTag.class
 com\andersonfonseka\simple\enums\ValidateEnum.class
 com\andersonfonseka\simple\taghandler\model\Column.class
 com\andersonfonseka\simple\tiles\SimpleTilesFragment.class

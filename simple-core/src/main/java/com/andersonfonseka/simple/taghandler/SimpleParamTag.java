@@ -13,6 +13,8 @@ public class SimpleParamTag extends TagSupport {
 
 	private String property;
 
+	private String value;
+
 	@Override
 	public int doStartTag() throws JspException {
 
@@ -20,12 +22,16 @@ public class SimpleParamTag extends TagSupport {
 
 		param.setId(this.id);
 		param.setProperty(this.property);
+		param.setValue(this.value);
 
 		if (getParent() instanceof SimpleTableColumnTag) {
 			SimpleTableColumnTag tag = (SimpleTableColumnTag) getParent();
 			tag.addParam(param);
-		} else {
+		} else if (getParent() instanceof SimpleButtonTag) {
 			SimpleButtonTag tag = (SimpleButtonTag) getParent();
+			tag.addParam(param);
+		} else if (getParent() instanceof SimpleLinkTag) {
+			SimpleLinkTag tag = (SimpleLinkTag) getParent();
 			tag.addParam(param);
 		}
 
@@ -46,6 +52,14 @@ public class SimpleParamTag extends TagSupport {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
 	}
 
 }

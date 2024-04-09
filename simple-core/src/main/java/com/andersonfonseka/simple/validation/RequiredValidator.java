@@ -8,7 +8,7 @@ public class RequiredValidator {
 	public String doExecute(String field, String value) {
 		if (value != null && value.trim().length() == 0) {
 
-			String msg = MessageFormat.format("The {0} is required.", field);
+			String msg = MessageFormat.format("O campo {0} é obrigatório.", field);
 			ValidatorMessage vMessage = new ValidatorMessage(msg, field);
 
 			Logger.getAnonymousLogger().info(vMessage.toString());

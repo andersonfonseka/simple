@@ -125,9 +125,13 @@ public class SimpleBaseController extends HttpServlet {
 
 						} catch (Exception ex) {
 
-							Field mField = form.getClass().getDeclaredField(element);
-							mField.setAccessible(true);
-							mField.set(form, req.getParameterValues(element));
+							try {
+								Field mField = form.getClass().getDeclaredField(element);
+								mField.setAccessible(true);
+								mField.set(form, req.getParameterValues(element));
+							} catch (NoSuchFieldException nsfe) {
+								System.out.println(nsfe);
+							}
 
 						}
 					}
