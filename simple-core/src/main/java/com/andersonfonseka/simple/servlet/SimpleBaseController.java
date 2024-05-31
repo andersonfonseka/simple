@@ -96,7 +96,16 @@ public class SimpleBaseController extends HttpServlet {
 
 				SimpleForm form = null;
 
-				if (simpleController.getScope().equals("request")) {
+				if (null != op) {
+					Method methodForm = controller.getClass().getMethod(op, SimpleForm.class);
+
+					if (null != methodForm.getAnnotation(SForm.class)) {
+						SForm sf = methodForm.getAnnotation(SForm.class);
+
+						String formClassName = formMap.get(sf.name()).getClassName();
+						form = (SimpleForm) Class.forName(formClassName).getDeclaredConstructor().newInstance();
+					}
+				} else if (simpleController.getScope().equals("request")) {
 					form = (SimpleForm) req.getAttribute(simpleController.getFormName());
 				} else if (simpleController.getScope().equals("session")) {
 					form = (SimpleForm) req.getSession().getAttribute(simpleController.getFormName());
